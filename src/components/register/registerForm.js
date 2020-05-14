@@ -75,7 +75,15 @@ export default function RegisterForm(props) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postRegister(values));
+    dispatch(
+      postRegister({
+        first_name: values.firstName,
+        last_name: values.lastName,
+        email: values.email,
+        password: values.password,
+        user_type: values.userType,
+      })
+    );
     // axiosWithAuth()
     //     .post('api url', values)
     //     .then(res => {

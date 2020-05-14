@@ -4,7 +4,7 @@ export const axiosWithAuth = () => {
   const token = JSON.parse(localStorage.getItem("token"));
 
   return axios.create({
-    baseURL: `${process.env.REACT_APP_GRANTED_API}`,
+    baseURL: "api goes here",
     headers: {
       Authorization: token,
     },
