@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Container from "@material-ui/core/Container";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -72,11 +71,6 @@ export default function RegisterForm() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({
-      email: values.email,
-      password: values.password,
-      user_type: values.userType,
-    });
     dispatch(
       postRegister({
         email: values.email,

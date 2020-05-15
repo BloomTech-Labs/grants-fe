@@ -47,7 +47,8 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postLogin(user));
+    // console.log(user)
+    // dispatch(postLogin(user));
     // axiosWithAuth()
     //     .post('api url', user)
     //     .then(res => {
