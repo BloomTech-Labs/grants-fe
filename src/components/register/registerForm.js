@@ -39,13 +39,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RegisterForm(props) {
+export default function RegisterForm() {
   const dispatch = useDispatch();
   const classes = useStyles();
 
   const [values, setValues] = useState({
-    firstName: "",
-    lastName: "",
     email: "",
     userType: "",
     password: "",
@@ -55,7 +53,6 @@ export default function RegisterForm(props) {
   ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
     if (value !== values.password) {
       return false;
-      // console.log(value)
     }
     return true;
   });
@@ -75,24 +72,18 @@ export default function RegisterForm(props) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log({
+      email: values.email,
+      password: values.password,
+      user_type: values.userType,
+    });
     dispatch(
       postRegister({
-        first_name: values.firstName,
-        last_name: values.lastName,
         email: values.email,
         password: values.password,
         user_type: values.userType,
       })
     );
-    // axiosWithAuth()
-    //     .post('api url', values)
-    //     .then(res => {
-    //         props.history.push('/')
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     })
-    // console.log(values)
   };
 
   return (
@@ -109,34 +100,6 @@ export default function RegisterForm(props) {
             onSubmit={handleSubmit}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextValidator
-                  autoComplete="fname"
-                  name="firstName"
-                  variant="outlined"
-                  value={values.firstName}
-                  validators={["required"]}
-                  errorMessages={["This field is required"]}
-                  fullWidth
-                  label="First Name"
-                  autoFocus
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextValidator
-                  variant="outlined"
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  value={values.lastName}
-                  validators={["required"]}
-                  errorMessages={["This field is required"]}
-                  autoComplete="lname"
-                  onChange={handleChange}
-                />
-              </Grid>
               <Grid item xs={12}>
                 <TextValidator
                   variant="outlined"
@@ -160,14 +123,12 @@ export default function RegisterForm(props) {
                   value={values.userType}
                   onChange={handleSelectChange}
                   label="User Type"
-                  // validators={['required']}
-                  // errorMessages={['This field is required']}
                 >
                   <MenuItem value="">
                     <em>Select User Type</em>
                   </MenuItem>
-                  <MenuItem value="grantWriter">Grant Writer</MenuItem>
-                  <MenuItem value="grantApplicant">Grant Applicant</MenuItem>
+                  <MenuItem value="writer">Grant Writer</MenuItem>
+                  <MenuItem value="applicant">Grant Applicant</MenuItem>
                 </Select>
               </FormControl>
               <Grid item xs={12}>
