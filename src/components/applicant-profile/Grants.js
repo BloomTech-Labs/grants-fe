@@ -41,7 +41,7 @@ const Grants = (grants) => {
           Habitasse platea dictumst quisque sagittis purus sit amet volutpat.
         </p>
         {/* {grants.map((grant) => {
-          <div key={grant.grant_id}>
+          <div className={classes.profilegrantcard} key={grant.grant_id}>
             <h3>{grants.grant_name}</h3> 
             <p>{grants.grant_description}</p>
           </div>
