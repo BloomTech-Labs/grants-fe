@@ -1,21 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./ApplicantProfile.styles";
 
-const Grants = () => {
+const Grants = (grants) => {
   const classes = useStyles();
 
-  // const dispatch = useDispatch();
-  // const user = useSelector((state) => state.login.user)
+  // const applicant_id = useSelector(state => state.user.userId)
 
   // useEffect(() => {
-  //   if(user) {
-  //     const { id } = user;
-  //     dispatch(getProfileInfo(id))
-  //   }
-  // },[dispatch, user])
+  //   dispatch(getApplicantGrants(applicant_id));
+  // }, [dispatch])  
 
   // const grants = useSelector((state) => state.profileInfo.grants)
 

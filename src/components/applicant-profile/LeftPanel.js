@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
-
-import { useSelector, useDispatch} from 'react-redux'
-import { getProfileInfo} from '../../store/actions/ApplicantActions'
+import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
@@ -20,15 +17,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LeftPanel() {
-  const dispatch = useDispatch();
-  const applicant_id = useSelector(state => state.login.user.UserId)
-  const applicantDetails = useSelector(state => state.applicantProfileDetails)
+export default function LeftPanel({ applicantDetails }) {
   const classes = useStyles();
-
-  useEffect(() => {
-    dispatch(getProfileInfo(applicant_id));
-  }, [dispatch])
 
   return (
     <>
