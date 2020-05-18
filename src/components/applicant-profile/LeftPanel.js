@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { useSelector, useDispatch} from 'react-redux'
+import { getProfileInfo} from '../../store/actions/ApplicantActions'
+
 import { makeStyles } from "@material-ui/core/styles";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Button from "@material-ui/core/Button";
@@ -17,7 +21,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function LeftPanel() {
+  const dispatch = useDispatch();
+  const applicant_id = useSelector(state => state.login.user.UserId)
+  const applicantDetails = useSelector(state => state.applicantProfileDetails)
   const classes = useStyles();
+
+  useEffect(() => {
+    dispatch(getProfileInfo(applicant_id));
+  }, [dispatch])
 
   return (
     <>
@@ -31,7 +42,7 @@ export default function LeftPanel() {
           </Button>
         </div>
         <div>Visit Our website:</div>
-        <a href="#">www.writemygrants.net</a>
+        <a href="#">{/* {applicantDetails.website_url} */} www.writemygrants.net</a>
       </div>
     </>
   );

@@ -17,11 +17,11 @@ export const getProfileInfo = (applicant_id) => (dispatch) => {
   dispatch({ type: GET_PROFILEINFO_START });
 
   axiosWithAuth()
-    .get(/* insert api url here */)
+    .get(`/applicants/${applicant_id}`)
     .then((res) => {
       dispatch({
         type: GET_PROFILEINFO_SUCCESS,
-        payload: "res.data",
+        payload: res.data,
       });
     })
     .catch((err) => {
