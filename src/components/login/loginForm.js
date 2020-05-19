@@ -46,9 +46,13 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postLogin(user)).then(() => history.push("/profile"));
+    dispatch(postLogin(user)).then(() => {
+      return userType === "applicant"
+        ? history.push("/ApplicantProfileForm")
+        : history.push("/WriterProfileForm");
+    });
   };
 
   const classes = useStyles();

@@ -81,8 +81,10 @@ export default function RegisterForm() {
         user_type: values.userType,
       })
     );
-    await postLogin({ email: values.email, password: values.password }).then;
-    return history.push("/onboarding");
+    await postLogin({ email: values.email, password: values.password });
+    return values.userType === "applicant"
+      ? history.push("/ApplicantProfileForm")
+      : history.push("/WriterProfileForm");
   };
 
   return (
