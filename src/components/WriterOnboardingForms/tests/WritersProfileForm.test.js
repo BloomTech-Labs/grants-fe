@@ -39,34 +39,59 @@ test("accessible -  WriterProfileForm pass axe", async () => {
     initialState: {
       user: {},
       isLoading: false,
+      login: {},
     },
   });
   expect(await axe(container)).toHaveNoViolations();
 });
 
 test("Create profile header is visible", () => {
-  const { getByText } = render(<WriterProfileForm />);
+  const { getByText } = render(<WriterProfileForm />, {
+    initialState: {
+      user: {},
+      isLoading: false,
+      login: {},
+    },
+  });
   const createProfileHeader = getByText(/create profile/i);
 
   expect(createProfileHeader).toBeVisible();
 });
 
 test("Stepper is visible", () => {
-  const { getByTestId } = render(<WriterProfileForm />);
+  const { getByTestId } = render(<WriterProfileForm />, {
+    initialState: {
+      user: {},
+      isLoading: false,
+      login: {},
+    },
+  });
   const stepper = getByTestId("stepper");
 
   expect(stepper).toBeVisible();
 });
 
 test("Next Button is visible", () => {
-  const { getByText } = render(<WriterProfileForm />);
+  const { getByText } = render(<WriterProfileForm />, {
+    initialState: {
+      user: {},
+      isLoading: false,
+      login: {},
+    },
+  });
   const nextButton = getByText(/next/i);
 
   expect(nextButton).toBeVisible();
 });
 
 test("Next Button is disabled", () => {
-  const { getByText } = render(<WriterProfileForm />);
+  const { getByText } = render(<WriterProfileForm />, {
+    initialState: {
+      user: {},
+      isLoading: false,
+      login: {},
+    },
+  });
   const nextButton = getByText(/next/i);
 
   expect(nextButton).toBeDisabled();
@@ -77,7 +102,14 @@ test("Applicant Profile Form to be visible", () => {
     <WriterContactInfoForm
       contactFormState={contactFormStateMock}
       formHelperText={formHelperTextMock}
-    />
+    />,
+    {
+      initialState: {
+        user: {},
+        isLoading: false,
+        login: {},
+      },
+    }
   );
 
   expect(container).toBeVisible();
