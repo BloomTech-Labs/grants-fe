@@ -18,6 +18,7 @@ import GrantsForm from "./components/applicant-profile/GrantsForm";
 
 function App() {
   const loggedIn = useSelector((state) => state.login.loggedIn);
+  const user = useSelector((state) => state.login.user);
 
   return (
     <Router>
@@ -26,14 +27,6 @@ function App() {
           <LandingPage />
         </Route>
         {loggedIn && <Navbar />}
-        {/* <div>
-          <Link to="/WriterProfile">WriterProfile</Link>
-          <Link to="/ApplicantProfileForm">ApplicantProfileForm</Link>
-          <Link to="/WriterProfileForm">WriterProfileForm</Link>
-          <Link to="/LoginForm">LoginForm</Link>
-          <Link to="/RegisterForm">RegisterForm</Link>
-          <Link to="/LandingPage">LandingPage</Link>
-        </div> */}
         <Switch>
           <Route path="/GrantsForm">
             <GrantsForm />
@@ -52,13 +45,12 @@ function App() {
           <Route path="/Homepage">
             <Homepage />
           </Route>
-
-          <Route path="/ApplicantProfileForm">
-            <ApplicantProfileForm />
-          </Route>
-
-          <Route path="/WriterProfileForm">
-            <WriterProfileForm />
+          <Route path="/onboarding">
+            {user && user.user_type === "applicant" ? (
+              <ApplicantProfileForm />
+            ) : (
+              <WriterProfileForm />
+            )}
           </Route>
 
           <Route path="/RegisterForm">
@@ -68,8 +60,6 @@ function App() {
           <Route path="/LoginForm">
             <LoginForm />
           </Route>
-
-          {/*  */}
         </Switch>
       </ThemeProvider>
     </Router>

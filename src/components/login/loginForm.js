@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 const Login = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const userType = useSelector((state) => state.login.usertype);
+  // const userType = useSelector((state) => state.login.usertype);
 
   const [user, setUser] = useState({
     email: "",
@@ -47,17 +47,13 @@ const Login = (props) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(postLogin(user)).then(() => {
-      return userType === "applicant"
-        ? history.push("/ApplicantProfileForm")
-        : history.push("/WriterProfileForm");
-    });
+    dispatch(postLogin(user)).then(() => history.push("/Homepage"));
   };
 
   const classes = useStyles();
-  console.log({ userType });
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

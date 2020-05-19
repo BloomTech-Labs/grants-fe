@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -81,10 +81,8 @@ export default function RegisterForm() {
         user_type: values.userType,
       })
     );
-    await postLogin({ email: values.email, password: values.password });
-    return values.userType === "applicant"
-      ? history.push("/ApplicantProfileForm")
-      : history.push("/WriterProfileForm");
+    await postLogin({ email: values.email, password: values.password }).then;
+    return history.push("/onboarding");
   };
 
   return (
