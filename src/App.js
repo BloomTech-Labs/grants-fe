@@ -26,14 +26,6 @@ function App() {
           <LandingPage />
         </Route>
         {loggedIn && <Navbar />}
-        {/* <div>
-          <Link to="/WriterProfile">WriterProfile</Link>
-          <Link to="/ApplicantProfileForm">ApplicantProfileForm</Link>
-          <Link to="/WriterProfileForm">WriterProfileForm</Link>
-          <Link to="/LoginForm">LoginForm</Link>
-          <Link to="/RegisterForm">RegisterForm</Link>
-          <Link to="/LandingPage">LandingPage</Link>
-        </div> */}
         <Switch>
           <Route path="/GrantsForm">
             <GrantsForm />
