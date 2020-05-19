@@ -39,7 +39,9 @@ test("accessible -  WriterProfileForm pass axe", async () => {
     initialState: {
       user: {},
       isLoading: false,
-      login: {},
+      login: {
+        user: "",
+      },
     },
   });
   expect(await axe(container)).toHaveNoViolations();
@@ -50,7 +52,9 @@ test("Create profile header is visible", () => {
     initialState: {
       user: {},
       isLoading: false,
-      login: {},
+      login: {
+        user: "",
+      },
     },
   });
   const createProfileHeader = getByText(/create profile/i);
@@ -63,7 +67,9 @@ test("Stepper is visible", () => {
     initialState: {
       user: {},
       isLoading: false,
-      login: {},
+      login: {
+        user: "",
+      },
     },
   });
   const stepper = getByTestId("stepper");
@@ -76,7 +82,9 @@ test("Next Button is visible", () => {
     initialState: {
       user: {},
       isLoading: false,
-      login: {},
+      login: {
+        user: "",
+      },
     },
   });
   const nextButton = getByText(/next/i);
@@ -89,7 +97,9 @@ test("Next Button is disabled", () => {
     initialState: {
       user: {},
       isLoading: false,
-      login: {},
+      login: {
+        user: "",
+      },
     },
   });
   const nextButton = getByText(/next/i);
@@ -107,7 +117,9 @@ test("Applicant Profile Form to be visible", () => {
       initialState: {
         user: {},
         isLoading: false,
-        login: {},
+        login: {
+          user: "",
+        },
       },
     }
   );

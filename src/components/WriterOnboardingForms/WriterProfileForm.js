@@ -26,7 +26,7 @@ export default function WriterProfileForm() {
   const dispatch = useDispatch();
   const classes = useStyles();
 
-  const userId = useSelector((state) => state.login.userId);
+  const userId = useSelector((state) => state.login.user.id);
   // active step keeps track of which child component will render
   const [activeStep, setActiveStep] = useState(0);
 
@@ -147,9 +147,8 @@ export default function WriterProfileForm() {
         postWriterOboarding(
           {
             ...contactFormState,
-            ...bioFormState,
-            writersColleges,
-            writersWorkHistory,
+            website: bioFormState.website,
+            bio: bioFormState.bio,
           },
           Number(userId)
         )
