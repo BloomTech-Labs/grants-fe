@@ -19,6 +19,7 @@ import GrantsForm from "./components/applicant-profile/GrantsForm";
 function App() {
   const loggedIn = useSelector((state) => state.login.loggedIn);
   const user = useSelector((state) => state.login.user);
+  const userType = useSelector((state) => state.login.usertype);
 
   return (
     <Router>
@@ -34,14 +35,13 @@ function App() {
           <Route path="/GrantsList">
             <GrantsList />
           </Route>
-          <Route path="/ApplicantProfile">
-            <ApplicantProfile />
+          <Route path="/profile">
+            {userType && userType === "applicant" ? (
+              <ApplicantProfile />
+            ) : (
+              <WriterProfile />
+            )}
           </Route>
-
-          <Route path="/WriterProfile">
-            <WriterProfile />
-          </Route>
-
           <Route path="/Homepage">
             <Homepage />
           </Route>
@@ -52,11 +52,9 @@ function App() {
               <WriterProfileForm />
             )}
           </Route>
-
           <Route path="/RegisterForm">
             <RegisterForm />
           </Route>
-
           <Route path="/LoginForm">
             <LoginForm />
           </Route>

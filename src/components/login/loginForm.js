@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
 const Login = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  // const userType = useSelector((state) => state.login.usertype);
 
   const [user, setUser] = useState({
     email: "",
@@ -49,7 +48,7 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(postLogin(user)).then(() => history.push("/Homepage"));
+    dispatch(postLogin(user)).then(() => history.push("/profile"));
   };
 
   const classes = useStyles();
