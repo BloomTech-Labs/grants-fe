@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./components/globals/theme";
-
+import { useSelector } from "react-redux";
 import ApplicantProfile from "./components/applicant-profile/ApplicantProfile";
 import Navbar from "./components/navbar/Navbar";
 import WriterProfile from "./components/writer-profile/writerProfile.js";
@@ -17,10 +17,14 @@ import GrantsList from "./components/applicant-profile/GrantsList";
 import GrantsForm from "./components/applicant-profile/GrantsForm";
 
 function App() {
+  const loggedIn = useSelector((state) => state.login.loggedIn);
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Navbar />
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
+        {loggedIn && <Navbar />}
         {/* <div>
           <Link to="/WriterProfile">WriterProfile</Link>
           <Link to="/ApplicantProfileForm">ApplicantProfileForm</Link>
@@ -30,7 +34,6 @@ function App() {
           <Link to="/LandingPage">LandingPage</Link>
         </div> */}
         <Switch>
-          {/*  */}
           <Route path="/GrantsForm">
             <GrantsForm />
           </Route>
@@ -65,9 +68,6 @@ function App() {
             <LoginForm />
           </Route>
 
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
           {/*  */}
         </Switch>
       </ThemeProvider>
