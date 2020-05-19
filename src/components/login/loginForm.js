@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -48,11 +48,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postLogin(user)).then(() => {
-      return userType === "applicant"
-        ? history.push("/ApplicantProfileForm")
-        : history.push("/WriterProfileForm");
-    });
+    dispatch(postLogin(user)).then(() => history.push("/profile"));
   };
 
   const classes = useStyles();
