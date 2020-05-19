@@ -18,6 +18,7 @@ import GrantsForm from "./components/applicant-profile/GrantsForm";
 
 function App() {
   const loggedIn = useSelector((state) => state.login.loggedIn);
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
