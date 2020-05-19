@@ -70,7 +70,7 @@ export default function ApplicantProfileForm() {
   const handleSubmit = async () => {
     try {
       await dispatch(postApplicantOnboarding(formState, Number(userId)));
-      return history.push("/ApplicantProfile");
+      return history.push("/profile");
     } catch (err) {
       console.log(err);
     }
