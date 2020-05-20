@@ -8,7 +8,7 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
+import ChatIcon from "@material-ui/icons/Chat";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreIcon from "@material-ui/icons/MoreVert";
 
@@ -87,7 +87,7 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.sectionDesktop}>
             <IconButton
-              aria-label={`show ${messages} new mails`}
+              aria-label={`show ${messages} new chats`}
               color="inherit"
             >
               <Badge
@@ -95,7 +95,7 @@ export default function PrimarySearchAppBar() {
                 badgeContent={messages}
                 color="secondary"
               >
-                <MailIcon />
+                <ChatIcon />
               </Badge>
             </IconButton>
             <IconButton
