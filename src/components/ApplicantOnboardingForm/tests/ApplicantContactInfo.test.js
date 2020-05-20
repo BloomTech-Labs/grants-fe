@@ -11,6 +11,7 @@ import reducer from "../../../store/reducers/onboardingReducer";
 
 let formState = {};
 const formHelperText = {};
+const enableButtonMock = jest.fn(() => false);
 
 jest.mock("react", () => ({
   ...jest.requireActual("react"),
@@ -68,6 +69,7 @@ test("contact information is visible", () => {
     <ApplicantContactInfo
       formState={formState}
       formHelperText={formHelperText}
+      enableButton={enableButtonMock}
     />
   );
   const header = getByText(/contact information/i);
@@ -79,6 +81,7 @@ test("inputs are visible", () => {
     <ApplicantContactInfo
       formState={formState}
       formHelperText={formHelperText}
+      enableButton={enableButtonMock}
     />
   );
 
@@ -104,6 +107,7 @@ test("form submit adds ApplicantContactInfo info to state", () => {
     <ApplicantContactInfo
       formState={formState}
       formHelperText={formHelperText}
+      enableButton={enableButtonMock}
     />
   );
 
