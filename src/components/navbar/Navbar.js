@@ -86,15 +86,6 @@ export default function PrimarySearchAppBar() {
             />
           </div>
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label={`show ${chats} new Chats`} color="inherit">
-              <Badge
-                data-testid="messageBadge"
-                badgeContent={chats}
-                color="secondary"
-              >
-                <ChatIcon />
-              </Badge>
-            </IconButton>
             <IconButton
               aria-label={`show ${favorites} new Favorite`}
               color="inherit"
@@ -105,6 +96,15 @@ export default function PrimarySearchAppBar() {
                 data-testid="notificationBadge"
               >
                 <FavoriteIcon />
+              </Badge>
+            </IconButton>
+            <IconButton aria-label={`show ${chats} new Chats`} color="inherit">
+              <Badge
+                data-testid="messageBadge"
+                badgeContent={chats}
+                color="secondary"
+              >
+                <ChatIcon />
               </Badge>
             </IconButton>
             <IconButton
