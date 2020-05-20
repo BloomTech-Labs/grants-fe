@@ -51,9 +51,10 @@ const Login = (props) => {
     e.preventDefault();
     dispatch(postLogin(user)).then(() => {
       return userType === "applicant"
-        ? history.push("/ApplicantProfileForm")
-        : history.push("/WriterProfileForm");
+      ? history.push("/ApplicantProfileForm")
+      : history.push("/WriterProfileForm");
     });
+    console.log(user)
   };
 
   const classes = useStyles();

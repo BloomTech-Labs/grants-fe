@@ -10,14 +10,16 @@ import { useStyles } from "./ApplicantProfile.styles";
 
 export default function ApplicantProfile() {
   const dispatch = useDispatch();
-  const applicant_id = useSelector(state => state.login.user.UserId)
+  const applicant_id = useSelector(state => state.onboarding.user.id)
   const applicantDetails = useSelector(state => state.applicantProfileDetails)
   const grants = useSelector(state => state.grants)
   const classes = useStyles();
 
-  useEffect(() => {
-    dispatch(getProfileInfo(applicant_id));
-  }, [dispatch])  
+  console.log(applicant_id)
+
+  // useEffect(() => {
+  //   dispatch(getProfileInfo(applicant_id));
+  // }, [dispatch])  
 
   return (
     <div className={classes.root}>

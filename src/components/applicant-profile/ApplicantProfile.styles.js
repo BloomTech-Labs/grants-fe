@@ -62,6 +62,7 @@ export const useStyles = makeStyles(theme => ({
     marginTop: "10px"
   },
   profilepaper: {
+    backgroundColor: "lightGray",
     minHeight: "65%",
     padding: theme.spacing(1),
     "& p": {
@@ -81,7 +82,7 @@ export const useStyles = makeStyles(theme => ({
       [theme.breakpoints.down("xs")]: {
         margin: "5% 0 0"
       }
-    }
+    },
   },
   profile: {
     margin: "1rem auto",

@@ -1,6 +1,6 @@
 import React from "react";
-import { useStyles } from "./ApplicantProfile.styles";
 import Paper from "@material-ui/core/Paper";
+import { useStyles } from "./ApplicantProfile.styles";
 import Grid from "@material-ui/core/Grid";
 
 const BioCard = ({ applicantDetails }) => {
