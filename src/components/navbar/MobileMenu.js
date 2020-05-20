@@ -51,9 +51,7 @@ export default function MobileMenu({
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
             color="inherit"
-          >
-            {/* <AccountCircle /> */}
-          </IconButton>
+          ></IconButton>
           <p>More Options</p>
         </MenuItem>
       </Menu>
