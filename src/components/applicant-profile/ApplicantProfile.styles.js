@@ -15,15 +15,14 @@ export const useStyles = makeStyles(theme => ({
     gap: "1px 1px",
     "& h1": {
       fontSize: "2em",
-      marginBlockEnd: "0.5em",
       [theme.breakpoints.down("xs")]: {
         margin: "0"
       }
     },
     "& h2": {
+      fontSize: "1.2em",
       fontWeight: "normal",
-      marginBlockEnd: "0",
-      marginBlockStart: "1.2em",
+      marginBlockStart: "1.8em",
       [theme.breakpoints.down("xs")]: {
         gridTemplateColumns: "2fr",
         textAlign: "center",
@@ -53,10 +52,9 @@ export const useStyles = makeStyles(theme => ({
       width: "85%"
     }
   },
-  profileGrantCard: {
-    width: "95%",
-    borderBottom: "solid 1px gray",
-    margin: "0 auto"
+  profilegrantcard: {
+    width: "90%",
+    margin: "4% auto",
   },
   grantblock: {
     marginTop: "10px"
@@ -65,13 +63,17 @@ export const useStyles = makeStyles(theme => ({
     backgroundColor: "lightGray",
     minHeight: "65%",
     padding: theme.spacing(1),
+    [theme.breakpoints.down("xs")]: {
+      margin: "0",
+      padding: "2%"
+    },
     "& p": {
       lineHeight: "1.4rem",
       margin: "0",
-      padding: "2%",
+      padding: "1%",
       [theme.breakpoints.down("xs")]: {
         margin: "0",
-        padding: "2%"
+        padding: "3%",
       },
       [theme.breakpoints.up("xs")]: {
         textAlign: "justify",

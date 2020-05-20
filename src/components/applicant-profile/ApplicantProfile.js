@@ -4,7 +4,7 @@ import BioCard from "./BioCard";
 import Grants from "./Grants";
 import LeftPanel from "./LeftPanel";
 import { useSelector, useDispatch} from 'react-redux'
-import { getProfileInfo} from '../../store/actions/ApplicantActions'
+import { getProfileInfo } from '../../store/actions/ApplicantActions'
 
 import { useStyles } from "./ApplicantProfile.styles";
 
