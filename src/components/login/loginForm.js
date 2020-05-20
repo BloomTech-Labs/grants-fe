@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,9 +11,7 @@ import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-
 import { postLogin } from "../../store/actions/LoginActions";
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -29,35 +27,24 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
-const Login = (props) => {
+const Login = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const userType = useSelector((state) => state.login.usertype);
-
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-
   const handleChange = (e) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postLogin(user)).then(() => {
-      return userType === "applicant"
-      ? history.push("/ApplicantProfileForm")
-      : history.push("/WriterProfileForm");
-    });
+    dispatch(postLogin(user)).then(() => history.push("/profile"));
   };
-
   const classes = useStyles();
-  console.log({ userType });
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -124,5 +111,4 @@ const Login = (props) => {
     </Container>
   );
 };
-
 export default Login;

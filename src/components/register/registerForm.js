@@ -12,10 +12,8 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { makeStyles } from "@material-ui/core/styles";
 import { postRegister, postLogin } from "../../store/actions/LoginActions";
-
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { useHistory } from "react-router-dom";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -38,13 +36,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
 }));
-
 export default function RegisterForm() {
   const dispatch = useDispatch();
   const classes = useStyles();
-
   const history = useHistory();
-
   const [isDisabled, setIsDisabled] = useState(true);
   const [values, setValues] = useState({
     email: "",
@@ -52,7 +47,6 @@ export default function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-
   useEffect(() => {
     if (
       values.email &&
@@ -63,21 +57,18 @@ export default function RegisterForm() {
       return setIsDisabled(false);
     }
   }, [values.email, values.userType, values.password, values.confirmPassword]);
-
   ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
     if (value !== values.password) {
       return false;
     }
     return true;
   });
-
   const handleChange = (e) => {
     setValues({
       ...values,
       [e.target.name]: e.target.value,
     });
   };
-
   const handleSelectChange = (e) => {
     setValues({
       ...values,
@@ -96,7 +87,6 @@ export default function RegisterForm() {
     await postLogin({ email: values.email, password: values.password });
     return history.push("/onboarding");
   };
-
   return (
     <div className="register">
       <Container component="main" maxWidth="xs">
