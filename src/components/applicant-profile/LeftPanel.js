@@ -32,7 +32,7 @@ export default function LeftPanel({ applicantDetails }) {
           </Button>
         </div>
         <div>Visit Our website:</div>
-        <a href="#">{/* {applicantDetails.website_url} */} www.writemygrants.net</a>
+        <a href="#">{applicantDetails.website}</a>
       </div>
     </>
   );
