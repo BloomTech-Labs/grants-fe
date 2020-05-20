@@ -28,7 +28,6 @@ function App() {
         <Route exact path="/">
           <LandingPage />
         </Route>
-        {/* If a user is logged in, the Navbar will render */}
         {loggedIn && <Navbar />}
         <Switch>
           <Route path="/GrantsForm">
@@ -38,7 +37,6 @@ function App() {
             <GrantsList />
           </Route>
           <Route path="/profile">
-            {/* renders profile based on usertype */}
             {userType && userType === "applicant" ? (
               <ApplicantProfile />
             ) : (
@@ -49,7 +47,6 @@ function App() {
             <Homepage />
           </Route>
           <Route path="/onboarding">
-            {/* renders onboarding forms based on usertype */}
             {user && user.user_type === "applicant" ? (
               <ApplicantProfileForm />
             ) : (
