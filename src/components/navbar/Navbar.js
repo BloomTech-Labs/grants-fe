@@ -6,11 +6,10 @@ import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreIcon from "@material-ui/icons/MoreVert";
 
 import { useStyles } from "./Navbar.styles";
@@ -108,7 +107,7 @@ export default function PrimarySearchAppBar() {
                 color="secondary"
                 data-testid="notificationBadge"
               >
-                <NotificationsIcon />
+                <FavoriteIcon />
               </Badge>
             </IconButton>
             <IconButton
