@@ -15,7 +15,6 @@ export default function MenuComponent({
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const userType = useSelector((state) => state.login.usertype);
   return (
     <>
       <Menu
