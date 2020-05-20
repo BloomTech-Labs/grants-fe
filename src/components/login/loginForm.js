@@ -54,7 +54,6 @@ const Login = (props) => {
       ? history.push("/ApplicantProfileForm")
       : history.push("/WriterProfileForm");
     });
-    console.log(user)
   };
 
   const classes = useStyles();
