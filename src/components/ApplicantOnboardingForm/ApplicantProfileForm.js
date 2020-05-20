@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postApplicantOnboarding } from "../../store/actions/onboardingActions";
@@ -69,6 +69,24 @@ export default function ApplicantProfileForm() {
   });
 
   /* ********************* END FORM STATE AND SETTERS ********************* */
+
+  useEffect(() => {
+    /* once the user has filled out all required form, `Next` button will be enabled (button is rendered in WriterProfileForm.js. need to explore a more performant solution */
+    formState.first_name &&
+      formState.last_name &&
+      formState.city &&
+      formState.state &&
+      formState.zip &&
+      formState.country &&
+      setDisableButton(false);
+  }, [
+    formState.first_name,
+    formState.last_name,
+    formState.city,
+    formState.state,
+    formState.zip,
+    formState.country,
+  ]);
 
   /* ********************* BEGIN CHANGE HANDLERS ********************* */
 

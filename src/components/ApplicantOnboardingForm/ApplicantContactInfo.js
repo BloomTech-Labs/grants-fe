@@ -14,28 +14,8 @@ export default function ApplicantContactInfo({
   handleValidation,
   orgStatus,
   handleOrgStatusChange,
-  enableButton,
 }) {
   const classes = useStyles();
-
-  useEffect(() => {
-    /* once the user has filled out all required form, `Next` button will be enabled (button is rendered in WriterProfileForm.js. need to explore a more performant solution */
-    formState.first_name &&
-      formState.last_name &&
-      formState.city &&
-      formState.state &&
-      formState.zip &&
-      formState.country &&
-      enableButton(false);
-  }, [
-    formState.first_name,
-    formState.last_name,
-    formState.city,
-    formState.state,
-    formState.zip,
-    formState.country,
-    enableButton,
-  ]);
 
   return (
     <div className={classes.container}>
