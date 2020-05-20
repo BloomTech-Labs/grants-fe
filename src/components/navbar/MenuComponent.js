@@ -38,10 +38,7 @@ export default function MenuComponent({
         <MenuItem
           onClick={async () => {
             await handleMenuClose();
-            await userType;
-            return userType === "writer"
-              ? history.push("/WriterProfile")
-              : history.push("/ApplicantProfile");
+            return history.push("/profile");
           }}
         >
           Profile
