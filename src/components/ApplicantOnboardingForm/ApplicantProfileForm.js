@@ -28,9 +28,15 @@ export default function ApplicantProfileForm() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const userId = useSelector((state) => state.login.user.id);
-  // active step keeps track of which child component will render
+
+  /* ********************* BEGIN FORM STATE AND SETTERS ********************* */
+
+  /* active step keeps track of which child component the stepper function will render */
   const [activeStep, setActiveStep] = useState(0);
+
+  /* The backend doesn't handle for this field but it is needed for the "Are you part of an organization?" checkbox in ApplicantContactInfo.js which indicates org status to dynamically render the next form shown to the user*/
   const [orgStatus, setOrgStatus] = useState(false);
+
   const [formState, setFormState] = useState({
     first_name: "",
     last_name: "",
@@ -44,7 +50,8 @@ export default function ApplicantProfileForm() {
     website: "",
     bio: "",
   });
-  // state for handling error text when input validation is not met
+
+  /* state for handling error text when input validation is not met */
   const [formHelperText, setFormHelperText] = useState({
     first_name: undefined,
     last_name: undefined,
@@ -59,6 +66,10 @@ export default function ApplicantProfileForm() {
     bio: undefined,
   });
 
+  /* ********************* END FORM STATE AND SETTERS ********************* */
+
+  /* ********************* BEGIN CHANGE HANDLERS ********************* */
+
   const handleOrgStatusChange = () => setOrgStatus(!orgStatus);
 
   const handleChanges = (e) => {
@@ -67,20 +78,38 @@ export default function ApplicantProfileForm() {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleNext = () => {
+    setActiveStep(activeStep + 1);
+  };
+
+  const handleBack = () => {
+    activeStep === 1 && setFormState({ ...formState, org: false });
+    return setActiveStep(activeStep - 1);
+  };
+
+  /* ********************* END CHANGE HANDLERS ********************* */
+
+  /* ********************* BEGIN SUBMIT HANDLERS ********************* */
+
+  /* Submits all form data to the backend - only available at the end of the on boarding process*/
   const handleSubmit = async () => {
     try {
       await dispatch(postApplicantOnboarding(formState, Number(userId)));
       return history.push("/profile");
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
+  /* ********************* END SUBMIT HANDLERS ********************* */
 
+  /* ********************* BEGIN INPUT VALIDATION ********************* */
   const handleValidation = (e) => {
-    // validation function handles all inputs where the only validation is that the string must be greater than 2
+    /* validation function handles all inputs where the only validation is that the string must be greater than 2 */
     const validator = async (formValue) => {
-      //persisting the event to ensure it makes it to validation
+      /*persisting the event to ensure it makes it to validation */
       e.persist();
+      /* checks to see if user input is greater than 2 characters */
       let valid = /(?=(?:.*?[a-z]){2})/i.test(formValue);
       if (!valid) {
         setFormHelperText({
@@ -94,7 +123,7 @@ export default function ApplicantProfileForm() {
         });
       }
     };
-    // handling input validation
+    /* handling input validation based on input id and setting error message to be rendered via helperText*/
     switch (e.target.id) {
       case "first_name":
         validator(formState.first_name);
@@ -152,7 +181,7 @@ export default function ApplicantProfileForm() {
     }
   };
 
-  // children components render different forms as user moves through the registration process
+  /* children components render different forms as user moves through the registration process. getStepContent is invoked in the return of this component and passed the activeStep slice of state which is being changed by the handle submit of the back and next buttons. All the prop drilling is because the Review form needs access to all the props, might be worth moving to global state to clean the code up */
   function getStepContent(step) {
     switch (step) {
       case 0:
@@ -168,6 +197,7 @@ export default function ApplicantProfileForm() {
           />
         );
       case 1:
+        /* Checking to see if the user is part of an org to give them the appropriate form next. Might have made more sense to just dynamically render the fields in one form, rather than two. Current implementation works but might be nice to refactor for cleanliness sake. */
         return orgStatus ? (
           <OrgInformation
             handleChanges={handleChanges}
@@ -200,14 +230,6 @@ export default function ApplicantProfileForm() {
         throw new Error("Unknown step");
     }
   }
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleBack = () => {
-    activeStep === 1 && setFormState({ ...formState, org: false });
-    return setActiveStep(activeStep - 1);
-  };
 
   return (
     <>
@@ -217,7 +239,12 @@ export default function ApplicantProfileForm() {
           <Typography component="h1" variant="h4" align="center">
             Create Profile
           </Typography>
-          <Stepper activeStep={activeStep} className={classes.stepper}>
+          {/* the stepper handles visual marker the user sees that shows them their progress in the process */}
+          <Stepper
+            alternativeLabel
+            activeStep={activeStep}
+            className={classes.stepper}
+          >
             {steps.map((label) => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
@@ -225,6 +252,7 @@ export default function ApplicantProfileForm() {
             ))}
           </Stepper>
           <>
+            {/* switch statement controlling which child form component is rendering based on the activeStep state */}
             {getStepContent(activeStep)}
             <div className={classes.buttons}>
               {activeStep !== 0 && (
@@ -235,7 +263,7 @@ export default function ApplicantProfileForm() {
               <Button
                 variant="contained"
                 color="primary"
-                // dynamically rendering which submit handler is applied
+                /* dynamically rendering which submit handler is applied, as long as the user has more steps to complete the button will handle next. Once the user moves fully through the process the button will handle submitting the values */
                 onClick={
                   activeStep === steps.length - 1 ? handleSubmit : handleNext
                 }
