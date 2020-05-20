@@ -50,6 +50,8 @@ export default function ApplicantProfileForm() {
     website: "",
     bio: "",
   });
+  /* change this value to `true` to disable the button until user completes form - currently set to false for development purposes */
+  const [disableButton, setDisableButton] = useState(true);
 
   /* state for handling error text when input validation is not met */
   const [formHelperText, setFormHelperText] = useState({
@@ -69,6 +71,9 @@ export default function ApplicantProfileForm() {
   /* ********************* END FORM STATE AND SETTERS ********************* */
 
   /* ********************* BEGIN CHANGE HANDLERS ********************* */
+
+  /* enableButton passed down as props to avoid `index.js:1 Warning: Cannot update a component (`ApplicantProfileForm`) while rendering a different component (`OrgInformation`). To locate the bad setState() call inside `OrgInformation`, follow the stack trace` when trying to enable the button in children forms by passing and invoking: `setDisableButton(false)` */
+  const enableButton = () => setDisableButton(false);
 
   const handleOrgStatusChange = () => setOrgStatus(!orgStatus);
 
@@ -194,6 +199,7 @@ export default function ApplicantProfileForm() {
             handleValidation={handleValidation}
             orgStatus={orgStatus}
             handleOrgStatusChange={handleOrgStatusChange}
+            enableButton={enableButton}
           />
         );
       case 1:
@@ -263,6 +269,7 @@ export default function ApplicantProfileForm() {
               <Button
                 variant="contained"
                 color="primary"
+                disabled={disableButton}
                 /* dynamically rendering which submit handler is applied, as long as the user has more steps to complete the button will handle next. Once the user moves fully through the process the button will handle submitting the values */
                 onClick={
                   activeStep === steps.length - 1 ? handleSubmit : handleNext
