@@ -1,11 +1,6 @@
 import React from "react";
 // import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./components/globals/theme";
 import { useSelector } from "react-redux";
@@ -52,14 +47,10 @@ function App() {
             <Homepage />
           </Route>
           <Route path="/onboarding">
-            {user ? (
-              user.user_type === "applicant" ? (
-                <ApplicantProfileForm />
-              ) : (
-                <WriterProfileForm />
-              )
+            {user && user.user_type === "applicant" ? (
+              <ApplicantProfileForm />
             ) : (
-              <Redirect to="/profile" />
+              <WriterProfileForm />
             )}
           </Route>
           <Route path="/RegisterForm">
