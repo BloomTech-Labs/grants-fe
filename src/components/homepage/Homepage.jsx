@@ -27,6 +27,9 @@ const Homepage = () => {
   const grants = useSelector((state) => {
     return state.homePage.grantsInfo;
   });
+  const state = useSelector((state) => {
+    return state;
+  });
   const user = useSelector((state) => {
     return state.homePage.userInfo;
   });
