@@ -13,55 +13,59 @@ export const FAVORITE_DELETE_SUCCESS = "FAVORITE_DELETE_SUCCESS";
 export const FAVORITE_DELETE_FAILURE = "FAVORITE_DELETE_FAILURE";
 
 export const postFavorite = (value) => (dispatch) => {
-  dispatch({ type: FAVORITE_POST_START });
-  return axiosWithAuth()
-    .post(`/TBD`, value)
-    .then((res) => {
-      dispatch({
-        type: FAVORITE_POST_SUCCESS,
-        payload: res.data,
-      });
-    })
-    .catch((err) => {
-      dispatch({
-        type: FAVORITE_POST_FAILURE,
-        payload: { error: err.message },
-      });
-    });
+  dispatch({ type: FAVORITE_POST_SUCCESS, payload: value });
+  console.log(`POSTFAV: VALUE: `, value);
+  //   dispatch({ type: FAVORITE_POST_START });
+  //   return axiosWithAuth()
+  //     .post(`/TBD`, value)
+  //     .then((res) => {
+  //   dispatch({
+  //     type: FAVORITE_POST_SUCCESS,
+  //     payload: res.data,
+  //   });
+  // })
+  // .catch((err) => {
+  //   dispatch({
+  //     type: FAVORITE_POST_FAILURE,
+  //     payload: { error: err.message },
+  //   });
+  // });
 };
 
 export const getFavorite = () => (dispatch) => {
-  dispatch({ type: FAVORITE_GET_START });
-  return axiosWithAuth()
-    .get(`/TBD`)
-    .then((res) => {
-      dispatch({
-        type: FAVORITE_GET_SUCCESS,
-        payload: res.data,
-      });
-    })
-    .catch((err) => {
-      dispatch({
-        type: FAVORITE_GET_FAILURE,
-        payload: { error: err.message },
-      });
-    });
+  dispatch({ type: FAVORITE_GET_SUCCESS });
+  //   dispatch({ type: FAVORITE_GET_START });
+  //   return axiosWithAuth()
+  //     .get(`/TBD`)
+  //     .then((res) => {
+  //       dispatch({
+  //         type: FAVORITE_GET_SUCCESS,
+  //         payload: res.data,
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       dispatch({
+  //         type: FAVORITE_GET_FAILURE,
+  //         payload: { error: err.message },
+  //       });
+  //     });
 };
 
-export const deleteFavorite = () => (dispatch) => {
-  dispatch({ type: FAVORITE_DELETE_START });
-  return axiosWithAuth()
-    .delete(`/TBD`)
-    .then((res) => {
-      dispatch({
-        type: FAVORITE_DELETE_SUCCESS,
-        payload: res.data,
-      });
-    })
-    .catch((err) => {
-      dispatch({
-        type: FAVORITE_DELETE_FAILURE,
-        payload: { error: err.message },
-      });
-    });
+export const deleteFavorite = (value) => (dispatch) => {
+  dispatch({ type: FAVORITE_DELETE_SUCCESS, payload: value });
+  //     dispatch({ type: FAVORITE_POST_START });
+  //   return axiosWithAuth()
+  //     .delete(`/TBD`)
+  //     .then((res) => {
+  //       dispatch({
+  //         type: FAVORITE_DELETE_SUCCESS,
+  //         payload: res.data,
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       dispatch({
+  //         type: FAVORITE_DELETE_FAILURE,
+  //         payload: { error: err.message },
+  //       });
+  //     });
 };

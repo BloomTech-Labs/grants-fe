@@ -11,10 +11,11 @@ import {
 } from "../actions/favoritesActions";
 
 const initialState = {
-  favorites: 0,
+  favoritesCount: 0,
+  favorites: [],
 };
 
-const loginReducer = (state = initialState, action) => {
+const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FAVORITE_POST_START:
       return {
@@ -22,10 +23,13 @@ const loginReducer = (state = initialState, action) => {
         isLoading: true,
       };
     case FAVORITE_POST_SUCCESS:
-      localStorage.setItem("token", action.payload.token);
+      console.log(`STATE.FAVORITES`, state.favorites);
+      console.log(action.payload);
       return {
         ...state,
-        favorites: state.favorites++,
+        favoritesCount: state.favoritesCount + 1,
+
+        favorites: [...state.favorites, action.payload],
       };
     case FAVORITE_POST_FAILURE:
       return {
@@ -57,7 +61,8 @@ const loginReducer = (state = initialState, action) => {
     case FAVORITE_DELETE_SUCCESS:
       return {
         ...state,
-        favorites: state.favorites - 1,
+        favoritesCount: state.favoritesCount - 1,
+        favorites: state.favorites.filter((fav) => fav !== action.payload),
         isLoading: false,
       };
     case FAVORITE_DELETE_FAILURE:
@@ -71,4 +76,4 @@ const loginReducer = (state = initialState, action) => {
   }
 };
 
-export default loginReducer;
+export default favoritesReducer;
