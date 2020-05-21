@@ -21,7 +21,7 @@ export const getProfileInfo = (applicant_id) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: GET_PROFILEINFO_SUCCESS,
-        payload: "res.data",
+        payload: res.data.profile,
       });
     })
     .catch((err) => {
