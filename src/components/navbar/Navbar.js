@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -10,7 +11,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ChatIcon from "@material-ui/icons/Chat";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+
 import MoreIcon from "@material-ui/icons/MoreVert";
 
 import { useStyles } from "./Navbar.styles";
@@ -24,9 +27,10 @@ export default function PrimarySearchAppBar() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const favorites = useSelector((state) => state.favorites.favoritesCount);
   // should ultimately come from global state
-  const [notifications, setNotifications] = useState(15);
-  const [messages, setMessages] = useState(5);
+  // const [favorites, setFavorites] = useState(15);
+  const [chats, setChats] = useState(5);
 
   const isMenuOpen = Boolean(anchorEl);
 
@@ -88,24 +92,24 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.sectionDesktop}>
             <IconButton
-              aria-label={`show ${notifications} new notifications`}
+
+              aria-label={`show ${favorites} new Favorite`}
               color="inherit"
             >
               <Badge
-                badgeContent={notifications}
+                badgeContent={favorites}
                 color="secondary"
                 data-testid="notificationBadge"
               >
-                <FavoriteIcon />
+                {/* if user has favorited a grant, the icon renders as a filled in heart with the number of favorties, if the user has not faved agrant, the icon is a heart border  */}
+                {favorites === 0 ? <FavoriteBorderIcon /> : <FavoriteIcon />}
               </Badge>
             </IconButton>
-            <IconButton
-              aria-label={`show ${messages} new chats`}
-              color="inherit"
-            >
+            <IconButton aria-label={`show ${chats} new Chats`} color="inherit">
               <Badge
                 data-testid="messageBadge"
-                badgeContent={messages}
+                badgeContent={chats}
+
                 color="secondary"
               >
                 <ChatIcon />
@@ -140,8 +144,8 @@ export default function PrimarySearchAppBar() {
         mobileMenuId={mobileMenuId}
         handleMobileMenuClose={handleMobileMenuClose}
         handleProfileMenuOpen={handleProfileMenuOpen}
-        messages={messages}
-        notifications={notifications}
+        chats={chats}
+        Favorite={favorites}
       />
       <MenuComponent
         anchorEl={anchorEl}
