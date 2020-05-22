@@ -13,8 +13,6 @@ const initialState = {
   reFetch: false,
 };
 
-// console.log("GranstPageRecuer.js running...");
-
 export const GrantsPageReducer = (state = initialState, { type, payload }) => {
   // console.log("GrantsPageReducer:type, payload ", type, payload);
   switch (type) {
