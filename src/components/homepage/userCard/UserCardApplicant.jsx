@@ -1,3 +1,4 @@
+// import libraries
 import React from "react";
 import "./user.scss";
 import Card from "@material-ui/core/Card";
@@ -5,13 +6,12 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 
+// import styling
 import { useStyles } from "./HomePageUserCardStyles.jsx";
 
 const UserCardApplicant = (props) => {
   const user = props.details;
   const classes = useStyles();
-
-  // console.log("UserCardApplicant....", user.type);
 
   return (
     <Card className={`${classes.userInfo} ${classes.applicant}`}>
