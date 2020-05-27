@@ -12,7 +12,7 @@ import {
 
 const initialState = {
   grants: [],
-  applicantProfileDetails: {},
+  profileDetails: {},
   isLoading: false,
 };
 
@@ -27,7 +27,7 @@ const profileReducer = (state = initialState, action) => {
     case GET_PROFILE_SUCCESS:
       return {
         ...state,
-        applicantProfileDetails: action.payload,
+        profileDetails: action.payload,
         isLoading: false,
       };
 

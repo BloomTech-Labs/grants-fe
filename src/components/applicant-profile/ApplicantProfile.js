@@ -12,7 +12,7 @@ export default function ApplicantProfile() {
   const dispatch = useDispatch();
   const applicant_id = useSelector((state) => state.login.userId);
   const applicantDetails = useSelector(
-    (state) => state.profileInfo.applicantProfileDetails
+    (state) => state.profileInfo.profileDetails
   );
   const grants = useSelector((state) => state.grants);
   const classes = useStyles();
