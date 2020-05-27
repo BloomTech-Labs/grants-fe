@@ -1,39 +1,80 @@
 import {
-  GET_GRANTS_INFO_START,
-  GET_GRANTS_INFO_SUCCESS,
-  GET_GRANTS_INFO_FAIL,
+  GET_GRANTS_START,
+  GET_GRANTS_SUCCESS,
+  GET_GRANTS_FAILURE,
+  POST_GRANTS_START,
+  POST_GRANTS_SUCCESS,
+  POST_GRANTS_FAILURE,
+  PUT_GRANTS_START,
+  PUT_GRANTS_SUCCESS,
+  PUT_GRANTS_FAILURE,
 } from "../actions/GrantsPageActions.js";
 
 const initialState = {
-  error: "",
-  userInfo: {},
-  grantsInfo: [],
-  isLoadingUser: false,
-  isLoadingGrants: false,
-  reFetch: false,
+  grants: [],
+  isLoading: false,
+  error: undefined,
 };
 
-export const GrantsPageReducer = (state = initialState, { type, payload }) => {
+export const GrantsPageReducer = (state = initialState, action) => {
   // console.log("GrantsPageReducer:type, payload ", type, payload);
-  switch (type) {
-    case GET_GRANTS_INFO_START:
+  switch (action.type) {
+    case GET_GRANTS_START:
       return {
         ...state,
         error: "",
-        isLoadingGrants: true,
+        isLoading: true,
       };
-    case GET_GRANTS_INFO_SUCCESS:
+    case GET_GRANTS_SUCCESS:
       return {
         ...state,
         error: "",
-        grantsInfo: payload,
-        isLoadingGrants: false,
+        grantsInfo: action.payload,
+        isLoading: false,
       };
-    case GET_GRANTS_INFO_FAIL:
+    case GET_GRANTS_FAILURE:
       return {
         ...state,
-        error: payload,
-        isLoadingGrants: false,
+        error: action.payload,
+        isLoading: false,
+      };
+
+    case POST_GRANTS_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case POST_GRANTS_SUCCESS:
+      return {
+        grants: [...state.grants, action.payload],
+        isLoading: false,
+      };
+
+    case POST_GRANTS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false,
+      };
+
+    case PUT_GRANTS_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case PUT_GRANTS_SUCCESS:
+      return {
+        grants: action.payload,
+        isLoading: false,
+      };
+
+    case PUT_GRANTS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false,
       };
     default:
       return state;
