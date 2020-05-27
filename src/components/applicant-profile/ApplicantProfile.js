@@ -17,8 +17,6 @@ export default function ApplicantProfile() {
   const grants = useSelector((state) => state.grants);
   const classes = useStyles();
 
-  console.log(applicantDetails);
-
   useEffect(() => {
     dispatch(getProfileInfo(applicant_id));
   }, [dispatch]);
