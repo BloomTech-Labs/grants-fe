@@ -5,7 +5,6 @@ import storage from "redux-persist/lib/storage";
 import loginReducer from "./loginReducer";
 import HomePageReducer from "./HomePageReducer";
 import profileReducer from "./profileReducer";
-import writerProfileReducer from "./writerProfileReducer.js";
 import onboardingReducer from "./onboardingReducer";
 import collegesReducer from "./collegesReducer";
 import grantsPageReducer from "./GrantsPageReducer.js";
@@ -20,7 +19,6 @@ const rootReducer = combineReducers({
   login: loginReducer,
   homePage: HomePageReducer,
   profileInfo: profileReducer,
-  writerprofile: writerProfileReducer,
   onboarding: onboardingReducer,
   collegeList: collegesReducer,
   grantsPage: grantsPageReducer,

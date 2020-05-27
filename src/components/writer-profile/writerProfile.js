@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchWriters } from "../../store/actions/writerProfileAction.js";
 import { StylesProvider, withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./writerProfile.styles.js";
