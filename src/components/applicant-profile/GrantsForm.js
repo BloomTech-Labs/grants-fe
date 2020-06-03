@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import TextAreaAutosize from "@material-ui/core/TextareaAutosize";
 import Button from "@material-ui/core/Button";
+import { ValidatorForm } from "react-material-ui-form-validator";
 import { postGrants } from "../../store/actions/grantsActions"
 
 import { useStyles } from "./GrantsForm.styles";
@@ -40,6 +41,11 @@ export default function GrantsForm() {
       <Typography variant="h6" gutterBottom>
         Adding a Grant
       </Typography>
+      <ValidatorForm
+          className={classes.form}
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -86,20 +92,18 @@ export default function GrantsForm() {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <form className={classes.datecontainer} noValidate>
-              <TextField
-                id="due_date"
-                label="Due Date"
-                type="date"
-                name="due_date"
-                className={classes.textField}
-                value={grant.due_date}
-                onChange={handleChange}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </form>
+            <TextField
+              id="due_date"
+              label="Due Date"
+              type="date"
+              name="due_date"
+              className={classes.textField}
+              value={grant.due_date}
+              onChange={handleChange}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
           </Grid>
           <Grid item xs={12}>
             <TextAreaAutosize
@@ -120,6 +124,7 @@ export default function GrantsForm() {
             </Button>
           </div>
         </Grid>
+      </ValidatorForm>
     </div>
   );
 }
