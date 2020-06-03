@@ -10,7 +10,7 @@ import { useStyles } from "./GrantsList.styles";
 
 export default function GrantsList() {
   const classes = useStyles();
-  
+
   // const dispatch = useDispatch();
   // const user = useSelector((state) => state.login.user)
 
@@ -28,7 +28,12 @@ export default function GrantsList() {
       <Grid className={classes.grantslistheader}>
         <h2>Saved Grants</h2>
         <div>
-          <Button component={Link} to="/GrantsForm" variant="contained" color="primary">
+          <Button
+            component={Link}
+            to="/GrantsForm"
+            variant="contained"
+            color="primary"
+          >
             Add a grant
           </Button>
         </div>

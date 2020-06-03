@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import TextAreaAutosize from "@material-ui/core/TextareaAutosize";
 import Button from "@material-ui/core/Button";
 import { ValidatorForm } from "react-material-ui-form-validator";
-import { postGrants } from "../../store/actions/grantsActions"
+import { postGrants } from "../../store/actions/grantsActions";
 
 import { useStyles } from "./GrantsForm.styles";
 
@@ -23,17 +23,17 @@ export default function GrantsForm() {
     due_date: "",
     description: ""
   });
-  const handleChange = (e) => {
+  const handleChange = e => {
     setGrant({
       ...grant,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     /*dispatch(postGrants(grant)).then(() => )*/
     history.push("/GrantsList");
-    console.log(grant)
+    console.log(grant);
   };
 
   return (
@@ -42,10 +42,10 @@ export default function GrantsForm() {
         Adding a Grant
       </Typography>
       <ValidatorForm
-          className={classes.form}
-          autoComplete="off"
-          onSubmit={handleSubmit}
-        >
+        className={classes.form}
+        autoComplete="off"
+        onSubmit={handleSubmit}
+      >
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -101,7 +101,7 @@ export default function GrantsForm() {
               value={grant.due_date}
               onChange={handleChange}
               InputLabelProps={{
-                shrink: true,
+                shrink: true
               }}
             />
           </Grid>
