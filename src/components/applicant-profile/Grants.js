@@ -10,31 +10,35 @@ const Grants = (/*grants*/) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const profileId = useSelector(state => state.profileInfo.profileDetails.applicant_id)
+  const profileId = useSelector(
+    state => state.profileInfo.profileDetails.applicant_id
+  );
   // const testProfileId = useSelector(state => state.profileInfo.profileDetails.id)
-  const viewerId = useSelector(state => state.login.userId)
-  console.log("profileId: ", profileId)
-  console.log("viewerId: ", viewerId)
+  const viewerId = useSelector(state => state.login.userId);
+  console.log("profileId: ", profileId);
+  console.log("viewerId: ", viewerId);
 
   useEffect(() => {
     dispatch(getGrantsInfo());
   }, [dispatch]);
 
-  const grants = useSelector((state) => state.grants.grantsInfo);
+  const grants = useSelector(state => state.grants.grantsInfo);
 
   return (
     <>
       <h3>Grants We'd Like to Apply For:</h3>
       <Paper className={classes.profilepaper}>
-        { Number(viewerId) === Number(profileId) ? (
-          <Button component={Link} to="/GrantsList">Edit Grants</Button> 
+        {Number(viewerId) === Number(profileId) ? (
+          <Button component={Link} to="/GrantsList">
+            Edit Grants
+          </Button>
         ) : (
           <div> </div>
         )}
         {!grants || grants.length < 1 ? (
           <h4>Loading Grants....</h4>
         ) : (
-          grants.map((grant) => {
+          grants.map(grant => {
             console.log(grant);
             return (
               <div className={classes.profilegrantcard} key={grant.grant_id}>
@@ -50,4 +54,3 @@ const Grants = (/*grants*/) => {
 };
 
 export default Grants;
-
