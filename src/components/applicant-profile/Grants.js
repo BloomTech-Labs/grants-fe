@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getGrantsInfo } from "../../store/actions/grantsActions";
 import { Link } from "react-router-dom";
+import Loader from "../loader/Loader.js";
+
 import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./ApplicantProfile.styles";
 import Button from "@material-ui/core/Button";
@@ -36,7 +38,7 @@ const Grants = (/*grants*/) => {
           <div> </div>
         )}
         {!grants || grants.length < 1 ? (
-          <h4>Loading Grants....</h4>
+          <Loader />
         ) : (
           grants.map(grant => {
             console.log(grant);
