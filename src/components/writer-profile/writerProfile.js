@@ -96,6 +96,7 @@ const WriterProfile = (props) => {
             <div className={classes.userName}>
               {" "}
               {writer.first_name}
+              {" "}
               {writer.last_name}
             </div>
           )}
