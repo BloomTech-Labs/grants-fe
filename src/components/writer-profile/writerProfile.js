@@ -11,7 +11,7 @@ import Tab from "@material-ui/core/Tab";
 import Link from "@material-ui/core/Link";
 import PropTypes from "prop-types";
 import Box from "@material-ui/core/Box";
-import { getApplicantInfo } from "../../store/actions/profileActions.js";
+import { getApplicantInfo, setEditing, endEditing } from "../../store/actions/profileActions.js";
 import Loader from "../loader/Loader.js";
 
 const GlobalCSS = withStyles({
@@ -65,6 +65,7 @@ const WriterProfile = (props) => {
   //Redux
   const writer = useSelector((state) => state.profileInfo.profileDetails);
   const userId = useSelector((state) => state.login.userId);
+  const isEditing = useSelector((state) => state.profileInfo.isEditing)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -80,6 +81,15 @@ const WriterProfile = (props) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  function editOn() {
+    dispatch(setEditing())
+  }
+
+  function editOff() {
+    dispatch(endEditing())
+    //use this for the handleSumbit for sumbitting editing on profile data
+  }
 
   return (
     <StylesProvider>
@@ -109,6 +119,7 @@ const WriterProfile = (props) => {
             Direct Message
           </Button>
           {writer && (
+            <>
             <Link
               classes={{ root: classes.rootLink }}
               href="#"
@@ -116,13 +127,49 @@ const WriterProfile = (props) => {
             >
               {writer.website}
             </Link>
+
+            <Button 
+              onClick={editOn}  
+            >
+              Edit Profile
+            </Button>
+
+            <Button 
+              onClick={editOff}
+            >
+              Done
+            </Button>
+            
+            {isEditing===false ? (
+              <div>Not Editing</div>
+            ): (
+              <div>Is Editing</div>
+            )}
+            
+            </>
           )}
         </div>
         {writer && (
-          <h3 className={classes.userEducation}>
-            Bio:
-            <div className={classes.bodyText}>{writer.bio}</div>
-          </h3>
+          <>
+            {isEditing===true ? (
+              <>
+                <input 
+                  type="text"
+                  placeholder="this thing"
+                ></input>
+                <Button type="submit">
+                  Sumbit
+                </Button>
+              </>
+            ): (
+
+              <h3 className={classes.userEducation}>
+                Bio:
+                <div className={classes.bodyText}>{writer.bio}</div>
+              </h3>
+            )
+            }
+          </>
         )}
         <div></div>
         <h3 className={classes.userEducation}>

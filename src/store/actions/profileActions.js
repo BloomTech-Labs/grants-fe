@@ -3,6 +3,8 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 export const GET_PROFILE_START = "GET_PROFILE_START";
 export const GET_PROFILE_SUCCESS = "GET_PROFILE_SUCCESS";
 export const GET_PROFILE_FAILURE = "GET_PROFILE_FAILURE";
+export const EDIT_PROFILE_START="EDIT_PROFILE_START";
+export const EDIT_PROFILE_SUCCESS="EDIT_PROFILE_SUCCESS";
 
 // export const POST_GRANTS_START = "POST_GRANTS_START";
 // export const POST_GRANTS_SUCCESS = "POST_GRANTS_SUCCESS";
@@ -49,3 +51,15 @@ export const getApplicantInfo = (id) => (dispatch) => {
       });
     });
 };
+
+export const setEditing = () => (dispatch) => {
+  dispatch({
+    type: EDIT_PROFILE_START
+  })
+};
+
+export const endEditing = () => (dispatch) => {
+  dispatch({
+    type: EDIT_PROFILE_SUCCESS
+  })
+}
