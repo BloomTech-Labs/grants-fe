@@ -17,8 +17,7 @@ export default function GrantsForm() {
   const dispatch = useDispatch();
   const [grant, setGrant] = useState({
     grant_name: "",
-    org_name: "",
-    contact_name: "",
+    awarding_agency: "",
     sector: "",
     due_date: "",
     description: ""
@@ -31,9 +30,10 @@ export default function GrantsForm() {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    /*dispatch(postGrants(grant)).then(() => )*/
-    history.push("/GrantsList");
-    console.log(grant);
+    dispatch(postGrants(grant)).then(() => 
+      history.push("/GrantsList")
+      )
+    console.log(grant)
   };
 
   return (
@@ -47,7 +47,7 @@ export default function GrantsForm() {
         onSubmit={handleSubmit}
       >
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={10} sm={6}>
             <TextField
               required
               id="grant_name"
@@ -58,29 +58,7 @@ export default function GrantsForm() {
               fullWidth
             />
           </Grid>
-          <Grid item xs={6}>
-            <TextField
-              required
-              id="org_name"
-              name="org_name"
-              label="Organization Name"
-              value={grant.org_name}
-              onChange={handleChange}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              required
-              id="contact_name"
-              name="contact_name"
-              label="Contact Name"
-              value={grant.contact_name}
-              onChange={handleChange}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item sm={6}>
             <TextField
               required
               id="sector"
@@ -88,10 +66,21 @@ export default function GrantsForm() {
               label="Sector"
               value={grant.sector}
               onChange={handleChange}
+              // fullWidth
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              required
+              id="awarding_agency"
+              name="awarding_agency"
+              label="Awarding Agency"
+              value={grant.awarding_agency}
+              onChange={handleChange}
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={10} sm={8}>
             <TextField
               id="due_date"
               label="Due Date"
@@ -105,7 +94,7 @@ export default function GrantsForm() {
               }}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={8}>
             <TextAreaAutosize
               required
               id="grant_description"
