@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -15,13 +15,17 @@ export default function GrantsForm() {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const applicant_id = useSelector((state) => state.profileInfo.profileDetails.id);
+
   const [grant, setGrant] = useState({
+    applicant_profile_id: applicant_id,
     grant_name: "",
     awarding_agency: "",
     sector: "",
     due_date: "",
     description: ""
   });
+  
   const handleChange = e => {
     setGrant({
       ...grant,
