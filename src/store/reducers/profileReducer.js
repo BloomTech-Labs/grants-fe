@@ -3,7 +3,8 @@ import {
   GET_PROFILE_SUCCESS,
   GET_PROFILE_FAILURE,
   EDIT_PROFILE_START,
-  EDIT_PROFILE_SUCCESS
+  EDIT_PROFILE_SUCCESS,
+  TOGGLE_EDITING
 } from "../actions/profileActions";
 
 const initialState = {
@@ -44,6 +45,12 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         isEditing: false
+      }
+
+    case TOGGLE_EDITING:
+      return {
+        ...state,
+        isEditing: !state.isEditing
       }
 
     default:
