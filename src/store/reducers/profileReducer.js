@@ -2,8 +2,6 @@ import {
   GET_PROFILE_START,
   GET_PROFILE_SUCCESS,
   GET_PROFILE_FAILURE,
-  EDIT_PROFILE_START,
-  EDIT_PROFILE_SUCCESS,
   TOGGLE_EDITING
 } from "../actions/profileActions";
 
@@ -35,23 +33,11 @@ const profileReducer = (state = initialState, action) => {
           isLoading: false,
       };
 
-    case EDIT_PROFILE_START:
-      return {
-        ...state,
-        isEditing: true
-      }
-    
-    case EDIT_PROFILE_SUCCESS:
-      return {
-        ...state,
-        isEditing: false
-      }
-
     case TOGGLE_EDITING:
       return {
         ...state,
         isEditing: !state.isEditing
-      }
+      };
 
     default:
       return state;

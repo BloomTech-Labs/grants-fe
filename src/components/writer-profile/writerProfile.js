@@ -4,14 +4,19 @@ import { StylesProvider, withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./writerProfile.styles.js";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Link from "@material-ui/core/Link";
 import PropTypes from "prop-types";
-import Box from "@material-ui/core/Box";
-import { getApplicantInfo, setEditing, endEditing } from "../../store/actions/profileActions.js";
+
+import { 
+  Typography, 
+  Button,
+  Tabs,
+  Tab,
+  Link,
+  Box,
+  Input 
+} from '@material-ui/core';
+
+import { getApplicantInfo, toggleEditing } from "../../store/actions/profileActions.js";
 import Loader from "../loader/Loader.js";
 
 const GlobalCSS = withStyles({
@@ -82,13 +87,13 @@ const WriterProfile = (props) => {
     setValue(newValue);
   };
 
-  function editOn() {
-    dispatch(setEditing())
+  function editToggle() {
+    dispatch(toggleEditing())
+    //use this for the handleSumbit for sumbitting editing on profile data
   }
 
-  function editOff() {
-    dispatch(endEditing())
-    //use this for the handleSumbit for sumbitting editing on profile data
+  function sumbitHandler() {
+    //for submitting profile updates.
   }
 
   return (
@@ -122,20 +127,20 @@ const WriterProfile = (props) => {
             <>
             <Link
               classes={{ root: classes.rootLink }}
-              href="#"
+              href={writer.website}
               onClick={preventDefault}
             >
               {writer.website}
             </Link>
 
             <Button 
-              onClick={editOn}  
+              onClick={editToggle}  
             >
               Edit Profile
             </Button>
 
             <Button 
-              onClick={editOff}
+              onClick={editToggle}
             >
               Done
             </Button>
@@ -153,13 +158,15 @@ const WriterProfile = (props) => {
           <>
             {isEditing===true ? (
               <>
-                <input 
+              <div>
+                <Input 
                   type="text"
                   placeholder="this thing"
-                ></input>
+                ></Input>
                 <Button type="submit">
                   Sumbit
                 </Button>
+              </div>
               </>
             ): (
 
