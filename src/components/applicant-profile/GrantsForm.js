@@ -25,19 +25,17 @@ export default function GrantsForm() {
     due_date: "",
     description: ""
   });
-  
+
   const handleChange = e => {
     setGrant({
       ...grant,
       [e.target.name]: e.target.value
     });
   };
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    dispatch(postGrants(grant)).then(() => 
-      history.push("/GrantsList")
-      )
-    console.log(grant)
+    await dispatch(postGrants(grant))
+      return history.push("/GrantsList");
   };
 
   return (
@@ -70,8 +68,7 @@ export default function GrantsForm() {
               label="Sector"
               value={grant.sector}
               onChange={handleChange}
-              // fullWidth
-            />
+            />  
           </Grid>
           <Grid item xs={6}>
             <TextField
