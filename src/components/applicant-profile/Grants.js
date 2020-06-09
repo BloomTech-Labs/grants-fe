@@ -31,8 +31,7 @@ const Grants = (/*grants*/) => {
       <h3>Grants We'd Like to Apply For:</h3>
       <Paper className={classes.profilepaper}>
         {Number(viewerId) === Number(profileId) ? (
-          <Button component={
-    } to="/GrantsList">
+          <Button component={    } to="/GrantsList">
             Edit Grants
           </Button>
         ) : (
