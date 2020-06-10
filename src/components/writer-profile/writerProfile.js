@@ -16,7 +16,7 @@ import {
   Input 
 } from '@material-ui/core';
 
-import { getApplicantInfo, toggleEditing, setEditing } from "../../store/actions/profileActions.js";
+import { getApplicantInfo, toggleEditing, updateWriterProfile } from "../../store/actions/profileActions.js";
 import Loader from "../loader/Loader.js";
 
 const GlobalCSS = withStyles({
@@ -85,6 +85,11 @@ const WriterProfile = (props) => {
 
   const [bioValue, setBioValue] = React.useState(writer.bio);
 
+  function editToggle() {
+    dispatch(toggleEditing())
+    //use this for the handleSumbit for sumbitting editing on profile data
+  }
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -93,13 +98,11 @@ const WriterProfile = (props) => {
     setBioValue(newValue)
   };
 
-  function editToggle() {
-    dispatch(toggleEditing())
-    //use this for the handleSumbit for sumbitting editing on profile data
-  }
 
-  function sumbitHandler() {
+  function sumbitHandler(event) {
     //for submitting profile updates.
+    //editToggle();
+    updateWriterProfile(userId, bioValue);
   }
 
 
@@ -145,12 +148,6 @@ const WriterProfile = (props) => {
             >
               Edit Profile
             </Button>
-
-            <Button 
-              onClick={editToggle}
-            >
-              Done
-            </Button>
             
             {isEditing===false ? (
               <div>Not Editing</div>
@@ -165,16 +162,21 @@ const WriterProfile = (props) => {
           <>
             {isEditing===true ? (
               <>
-              <div>
-                <h3 classname={classes.userEducation}>
+              <div className="edit-div">
+                <h3 className={classes.userEducation}>
                   Bio:
                 </h3>
                 <Input 
                   type="text"
+                  multiline={true}
+                  autoFocus={true}
                   value={bioValue}
                   onChange={editHandleChange}
                 ></Input>
-                <Button type="submit">
+                <Button 
+                  type="submit"
+                  onClick={sumbitHandler}
+                >
                   Sumbit
                 </Button>
               </div>
