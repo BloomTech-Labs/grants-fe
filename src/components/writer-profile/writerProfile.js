@@ -16,7 +16,7 @@ import {
   Input 
 } from '@material-ui/core';
 
-import { getApplicantInfo, toggleEditing } from "../../store/actions/profileActions.js";
+import { getApplicantInfo, toggleEditing, setEditing } from "../../store/actions/profileActions.js";
 import Loader from "../loader/Loader.js";
 
 const GlobalCSS = withStyles({
@@ -83,8 +83,14 @@ const WriterProfile = (props) => {
 
   const [value, setValue] = React.useState(0);
 
+  const [bioValue, setBioValue] = React.useState(writer.bio);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const editHandleChange = (event, newValue) => {
+    setBioValue(newValue)
   };
 
   function editToggle() {
@@ -95,6 +101,7 @@ const WriterProfile = (props) => {
   function sumbitHandler() {
     //for submitting profile updates.
   }
+
 
   return (
     <StylesProvider>
@@ -159,9 +166,13 @@ const WriterProfile = (props) => {
             {isEditing===true ? (
               <>
               <div>
+                <h3 classname={classes.userEducation}>
+                  Bio:
+                </h3>
                 <Input 
                   type="text"
-                  placeholder="this thing"
+                  value={bioValue}
+                  onChange={editHandleChange}
                 ></Input>
                 <Button type="submit">
                   Sumbit
