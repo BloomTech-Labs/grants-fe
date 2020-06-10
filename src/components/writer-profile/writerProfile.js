@@ -94,16 +94,21 @@ const WriterProfile = (props) => {
     setValue(newValue);
   };
 
-  const editHandleChange = (event, newValue) => {
-    setBioValue(newValue)
+  const editHandleChange = (event) => {
+    setBioValue(event.target.value);
+    console.log(bioValue);
   };
 
-
-  function sumbitHandler(event) {
-    //for submitting profile updates.
-    //editToggle();
-    updateWriterProfile(userId, bioValue);
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(updateWriterProfile(userId, {bio: bioValue}));
   }
+
+  // function sumbitHandler() {
+  //   //for submitting profile updates.
+  //   //editToggle();
+  //   updateWriterProfile(userId, bioValue);
+  // }
 
 
   return (
@@ -175,10 +180,11 @@ const WriterProfile = (props) => {
                 ></Input>
                 <Button 
                   type="submit"
-                  onClick={sumbitHandler}
+                  onClick={handleSubmit}
                 >
-                  Sumbit
+                  Submit
                 </Button>
+                {/*This works but I think something in the reducer might be directly mutating the state because the component doesn't re-render when it's submitted...*/}
               </div>
               </>
             ): (
