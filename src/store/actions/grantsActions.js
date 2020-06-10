@@ -32,14 +32,13 @@ const apiBase = "https://<>.herokuapp.com/api";
 export const getGrants = (info) => (dispatch) => {
   dispatch({ type: GET_GRANTS_START });
   axiosWithAuth()
-    // .get(`${grantsInfo}`)
     .get("/grants/")
     .then((res) => {
       console.log("getGrants>res: ", res);
       dispatch({ type: GET_GRANTS_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log("getGrantsInfo>err: ", err);
+      console.log("getGrants>err: ", err);
       dispatch({ type: GET_GRANTS_FAILURE, payload: { error: err.message } });
     });
 };
