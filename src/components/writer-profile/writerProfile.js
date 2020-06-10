@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import { useStyles } from "./writerProfile.styles.js";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PropTypes from "prop-types";
+import Loader from "../loader/Loader.js";
 
 import { 
   Typography, 
@@ -16,8 +17,12 @@ import {
   Input 
 } from '@material-ui/core';
 
-import { getApplicantInfo, toggleEditing, updateWriterProfile } from "../../store/actions/profileActions.js";
-import Loader from "../loader/Loader.js";
+import { 
+  getWriterInfo, 
+  toggleEditing, 
+  updateWriterProfile 
+} from "../../store/actions/profileActions.js";
+
 
 const GlobalCSS = withStyles({
   "@global": {
@@ -74,7 +79,7 @@ const WriterProfile = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getApplicantInfo(userId));
+    dispatch(getWriterInfo(userId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
   //
@@ -96,12 +101,13 @@ const WriterProfile = (props) => {
 
   const editHandleChange = (event) => {
     setBioValue(event.target.value);
-    console.log(bioValue);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(updateWriterProfile(userId, {bio: bioValue}));
+    dispatch(getWriterInfo(userId));
+
   }
 
   // function sumbitHandler() {
