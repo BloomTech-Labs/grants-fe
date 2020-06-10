@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getGrantsInfo } from "../../store/actions/grantsActions";
+import { getGrantsInfo } from "../../../store/actions/grantsActions";
 import { Link } from "react-router-dom";
-import Loader from "../loader/Loader.js";
+import Loader from "../../loader/Loader.js";
 
 import Paper from "@material-ui/core/Paper";
-import { useStyles } from "./ApplicantProfile.styles";
+import { useStyles } from "../ApplicantProfile.styles";
 import Button from "@material-ui/core/Button";
 
 const Grants = (/*grants*/) => {
@@ -44,6 +44,9 @@ const Grants = (/*grants*/) => {
               <div className={classes.profilegrantcard} key={grant.id}>
                 <h4>{grant.grant_name}</h4>
                 <p>{grant.description}</p>
+                <div>
+                <Link to={`/editgrant/${grant.id}`}><Button>Edit</Button></Link>
+                </div>
               </div>
             );
           })

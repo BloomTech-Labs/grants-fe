@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import BioCard from "./BioCard";
-import Grants from "./Grants";
+import Grants from "./applicant-grants/Grants";
 import LeftPanel from "./LeftPanel";
 import { useSelector, useDispatch } from "react-redux";
 import { getProfileInfo } from "../../store/actions/profileActions";

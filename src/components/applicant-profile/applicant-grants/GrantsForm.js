@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import TextAreaAutosize from "@material-ui/core/TextareaAutosize";
 import Button from "@material-ui/core/Button";
 import { ValidatorForm } from "react-material-ui-form-validator";
-import { postGrants } from "../../store/actions/grantsActions";
+import { postGrants } from "../../../store/actions/grantsActions";
 
 import { useStyles } from "./GrantsForm.styles";
 
