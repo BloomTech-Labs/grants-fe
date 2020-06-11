@@ -75,8 +75,14 @@ const WriterProfile = (props) => {
   //Redux
   const writer = useSelector((state) => state.profileInfo.profileDetails);
   const userId = useSelector((state) => state.login.userId);
-  const isEditing = useSelector((state) => state.profileInfo.isEditing)
+  const isEditing = useSelector((state) => state.profileInfo.isEditing);
+  const profileId = useSelector((state) => state.profileInfo.profileDetails.writer_id);
+  const viewerId = useSelector((state) => state.login.userId);
   const dispatch = useDispatch();
+
+  const [value, setValue] = React.useState(0);
+  const [bioValue, setBioValue] = React.useState(writer.bio);
+
 
   useEffect(() => {
     dispatch(getWriterInfo(userId));
@@ -86,18 +92,29 @@ const WriterProfile = (props) => {
 
   const preventDefault = (event) => event.preventDefault();
 
-  const [value, setValue] = React.useState(0);
 
-  const [bioValue, setBioValue] = React.useState(writer.bio);
-
-  function editToggle() {
-    dispatch(toggleEditing())
-    //use this for the handleSumbit for sumbitting editing on profile data
-  }
+  const editToggle = () => {
+    dispatch(toggleEditing());
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const EditButton = (props) => {
+    const viewerId = props.viewerId;
+    const profileId = props.profileId;
+
+    if(Number(viewerId) === Number(profileId)) {
+      return (
+        <Button 
+          onClick={editToggle}  
+        >
+          Edit Profile
+        </Button>
+      );
+    };
+  }; 
 
   const editHandleChange = (event) => {
     setBioValue(event.target.value);
@@ -108,13 +125,7 @@ const WriterProfile = (props) => {
     dispatch(updateWriterProfile(userId, {bio: bioValue}));
     dispatch(getWriterInfo(userId));
 
-  }
-
-  // function sumbitHandler() {
-  //   //for submitting profile updates.
-  //   //editToggle();
-  //   updateWriterProfile(userId, bioValue);
-  // }
+  };
 
 
   return (
@@ -153,19 +164,11 @@ const WriterProfile = (props) => {
             >
               {writer.website}
             </Link>
-
-            <Button 
-              onClick={editToggle}  
-            >
-              Edit Profile
-            </Button>
-            
-            {isEditing===false ? (
-              <div>Not Editing</div>
-            ): (
-              <div>Is Editing</div>
-            )}
-            
+            <EditButton
+              viewerId={viewerId}
+              profileId={profileId}
+            />  
+                        
             </>
           )}
         </div>
@@ -177,6 +180,7 @@ const WriterProfile = (props) => {
                 <h3 className={classes.userEducation}>
                   Bio:
                 </h3>
+
                 <Input 
                   type="text"
                   multiline={true}
@@ -184,13 +188,13 @@ const WriterProfile = (props) => {
                   value={bioValue}
                   onChange={editHandleChange}
                 ></Input>
+
                 <Button 
                   type="submit"
                   onClick={handleSubmit}
                 >
-                  Submit
+                  Save
                 </Button>
-                {/*This works but I think something in the reducer might be directly mutating the state because the component doesn't re-render when it's submitted...*/}
               </div>
               </>
             ): (
