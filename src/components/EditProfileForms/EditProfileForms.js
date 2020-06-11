@@ -5,6 +5,7 @@ import {
   Button,
   Input
 } from "@material-ui/core";
+import { useStyles } from "./EditProfileForms.styles.js";
 
 //  const writer = useSelector((state) => state.profileInfo.profileDetails);
 //   const userId = useSelector((state) => state.login.userId);
@@ -12,6 +13,8 @@ import {
 //   const profileId = useSelector((state) => state.profileInfo.profileDetails.writer_id);
 //   const viewerId = useSelector((state) => state.login.userId);
 //   const dispatch = useDispatch();
+
+
 
 export const EditButton = (props) => {
   const viewerId = props.viewerId;
@@ -31,4 +34,35 @@ export const EditButton = (props) => {
         </Button>
       );
     };
+};
+
+export const EditBioField = (props) => {
+  const classes = useStyles();
+
+    return (
+      <>
+        <div className={classes.editDiv}>
+        
+          <h3 className={classes.editTitle}>
+            Bio:
+          </h3>
+
+          <Input
+            type="text"
+            multiline={true}
+            autoFocus={true}
+            value={props.bioValue}
+            onChange={props.editHandleChange}
+          />
+
+          <Button
+            type="submit"
+            onClick={props.handleSubmit}
+          >
+            Save
+          </Button>
+        </div>
+      </>
+    );
+  
 };

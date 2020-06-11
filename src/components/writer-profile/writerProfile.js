@@ -8,8 +8,9 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PropTypes from "prop-types";
 import Loader from "../loader/Loader.js";
 import {
-  EditButton
-} from "./EditProfileForms.js";
+  EditButton,
+  EditBioField
+} from "../EditProfileForms/EditProfileForms.js";
 
 import { 
   Typography, 
@@ -108,21 +109,6 @@ const WriterProfile = (props) => {
     setValue(newValue);
   };
 
-  // const EditButton = (props) => {
-  //   const viewerId = props.viewerId;
-  //   const profileId = props.profileId;
-
-  //   if(Number(viewerId) === Number(profileId)) {
-  //     return (
-  //       <Button 
-  //         onClick={editToggle}  
-  //       >
-  //         Edit Profile
-  //       </Button>
-  //     );
-  //   };
-  // }; 
-
   const editHandleChange = (event) => {
     setBioValue(event.target.value);
   };
@@ -176,28 +162,18 @@ const WriterProfile = (props) => {
                   viewerId={viewerId}
                   profileId={profileId}
                 />
+                {/*This is only rendered if the vierId matches the ProfileId...only the profile owner has the option to edit their profile.*/}
               </>
             )}
           </div>
           {writer && (
             <>
               {isEditing === true ? (
-                <>
-                <Input 
-                type="text"
-                multiline={true}
-                autoFocus={true}
-                value={bioValue}
-                onChange={editHandleChange}
-              ></Input>
-
-              <Button 
-                type="submit"
-                onClick={handleSubmit}
-              >
-                Save
-              </Button>
-              </>
+                <EditBioField 
+                  bioValue={bioValue}
+                  editHandleChange={editHandleChange}
+                  handleSubmit={handleSubmit}
+                />
               ):(
 
               <h3 className={classes.userEducation}>
