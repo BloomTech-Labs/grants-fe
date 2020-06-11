@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { StylesProvider, withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -9,7 +9,8 @@ import PropTypes from "prop-types";
 import Loader from "../loader/Loader.js";
 import {
   EditButton,
-  EditBioField
+  EditBioField,
+  EditWriterInfo
 } from "../EditProfileForms/EditProfileForms.js";
 
 import { 
@@ -93,8 +94,16 @@ const WriterProfile = (props) => {
   const viewerId = useSelector((state) => state.login.userId);
 
   const [value, setValue] = React.useState(0);
-  const [bioValue, setBioValue] = React.useState(writer.bio);
-
+  const [profileValue, setProfileValue] = useState({
+    first_name: writer.first_name,
+    last_name: writer.last_name,
+    bio: writer.bio,
+    city: writer.city,
+    state: writer.state,
+    zip: writer.zip,
+    country: writer.country,
+    sector: writer.sector
+  });
 
   useEffect(() => {
     dispatch(getWriterInfo(userId));
@@ -169,7 +178,7 @@ const WriterProfile = (props) => {
           {writer && (
             <>
               {isEditing === true ? (
-                <EditBioField 
+                <EditWriterInfo 
                   bioValue={bioValue}
                   editHandleChange={editHandleChange}
                   handleSubmit={handleSubmit}

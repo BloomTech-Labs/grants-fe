@@ -36,33 +36,44 @@ export const EditButton = (props) => {
     };
 };
 
-export const EditBioField = (props) => {
+export const EditWriterInfo = (props) => {
   const classes = useStyles();
 
-    return (
-      <>
-        <div className={classes.editDiv}>
-        
-          <h3 className={classes.editTitle}>
-            Bio:
-          </h3>
+  return (
+    <>
+      <div className={classes.editDiv}>
+        <h3 className-={classes.editTitle}>
+          Bio:
+        </h3>      
+        <Input
+          className="bio-input" 
+          type="text"
+          multiline={true}
+          autoFocus={true}
+          value={props.bioValue}
+          onChange={props.editHandleChange}
+        />
 
+        <h3 className={classes.editTtitle}>
+          Name:
+        </h3>
+        <div className="name-edit">
           <Input
+            className="first-name-input" 
             type="text"
-            multiline={true}
-            autoFocus={true}
-            value={props.bioValue}
-            onChange={props.editHandleChange}
+            
           />
-
-          <Button
-            type="submit"
-            onClick={props.handleSubmit}
-          >
-            Save
-          </Button>
         </div>
-      </>
-    );
-  
-};
+
+
+
+        <Button
+          type="submit"
+          onClick={props.handleSubmit}
+        >
+          Save
+        </Button>
+      </div>
+    </>
+  )
+}
