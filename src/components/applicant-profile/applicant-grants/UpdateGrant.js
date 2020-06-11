@@ -29,10 +29,10 @@ export default function GrantsForm() {
       description: ""
     });
         
-    useEffect(() => {
-     setGrant({...grants.filter(grant => grant.id == id)[0]})},[grant.id, id, grants]
-    )
-
+    // useEffect(() => {
+    //  setGrant({...grants.filter(grant => grant.id == id)[0]})},[grant.id, id, grants]
+    // )
+    console.log(grants)
 
     const handleChange = (e) => {
         e.preventDefault()

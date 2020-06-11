@@ -39,7 +39,6 @@ export default function GrantsList() {
                 <div key={grant.id}>
                   <h3>{grant.grant_name}</h3> 
                   <p>{grant.description}</p>
-                  <p>{grant.id}</p>
                   <div>
                     <Link to={`/EditGrant/${grant.id}`}>
                       <Button>Edit</Button>

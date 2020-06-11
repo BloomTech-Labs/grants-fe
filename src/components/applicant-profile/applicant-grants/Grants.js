@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getGrantsInfo } from "../../../store/actions/grantsActions";
+import { getGrants, getGrantsByApplicantId } from "../../../store/actions/grantsActions";
 import { Link } from "react-router-dom";
 import Loader from "../../loader/Loader.js";
 
@@ -17,13 +17,17 @@ const Grants = (/*grants*/) => {
   );
 
   const viewerId = useSelector((state) => state.login.userId);
+  
+  const grants = useSelector((state) => state.grants.grants);
+  console.log(grants)
+
+  const grantProfile= useSelector((state) => state.profileInfo.profileDetails.id);
+  console.log(grantProfile)
 
   useEffect(() => {
-    dispatch(getGrantsInfo());
+   dispatch(getGrantsByApplicantId(grantProfile));
   }, [dispatch]);
-
-  const grants = useSelector((state) => state.grants.grants);
-
+  
   return (
     <>
       <h3>Grants We'd Like to Apply For:</h3>
@@ -39,7 +43,6 @@ const Grants = (/*grants*/) => {
           <Loader />
         ) : (
           grants.map((grant) => {
-            console.log(grant);
             return (
               <div className={classes.profilegrantcard} key={grant.id}>
                 <h4>{grant.grant_name}</h4>

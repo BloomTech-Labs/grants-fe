@@ -23,23 +23,23 @@ export const DELETE_GRANTS_FAILURE = "DELETE_PROFILE_FAILURE";
 
 // //==================UNCOMMENT THE SECTION BELOW===============================
 // /*
-const apiBase = "https://<>.herokuapp.com/api";
+// const apiBase = "https://<>.herokuapp.com/api";
 
-const grantsInfo = `${apiBase}/grantsInfo`;
+// const grantsInfo = `${apiBase}/grantsInfo`;
 
-export const getGrantsInfo = (info) => (dispatch) => {
-  dispatch({ type: GET_GRANTS_START });
-  axiosWithAuth()
-    .get(`${grantsInfo}`)
-    .then((res) => {
-      console.log("getGrantsInfo>res: ", res);
-      dispatch({ type: GET_GRANTS_SUCCESS, payload: res.data });
-    })
-    .catch((err) => {
-      console.log("getGrantsInfo>err: ", err);
-      dispatch({ type: GET_GRANTS_FAILURE, payload: { error: err.message } });
-    });
-};
+// export const getGrantsInfo = (info) => (dispatch) => {
+//   dispatch({ type: GET_GRANTS_START });
+//   axiosWithAuth()
+//     .get(`${grantsInfo}`)
+//     .then((res) => {
+//       console.log("getGrantsInfo>res: ", res);
+//       dispatch({ type: GET_GRANTS_SUCCESS, payload: res.data });
+//     })
+//     .catch((err) => {
+//       console.log("getGrantsInfo>err: ", err);
+//       dispatch({ type: GET_GRANTS_FAILURE, payload: { error: err.message } });
+//     });
+// };
 // */
 // //
 
@@ -75,38 +75,38 @@ export const getGrantsInfo = (info) => (dispatch) => {
 //
 
 export const getGrants = (id) => (dispatch) => {
-  dispatch({ type: PUT_GRANTS_START });
+  dispatch({ type: GET_GRANTS_START });
 
   axiosWithAuth()
     .get(`/grants/`)
     .then((res) => {
       dispatch({
-        type: PUT_GRANTS_SUCCESS,
+        type: GET_GRANTS_SUCCESS,
         payload: res.data,
       });
     })
     .catch((err) => {
       dispatch({
-        type: PUT_GRANTS_FAILURE,
+        type: GET_GRANTS_FAILURE,
         payload: { error: err.message },
       });
     });
 };
 
 export const getGrantsByApplicantId = (id) => (dispatch) => {
-  dispatch({ type: GET_APPLICANT_GRANTS_START });
+  dispatch({ type: GET_GRANTS_START });
 
   axiosWithAuth()
-    .get(`/grants/${id}`)
+    .get(`grants/user/${id}`)
     .then((res) => {
       dispatch({
-        type: GET_APPLICANT_GRANTS_SUCCESS,
+        type: GET_GRANTS_SUCCESS,
         payload: res.data,
       });
     })
     .catch((err) => {
       dispatch({
-        type: GET_APPLICANT_GRANTS_FAILURE,
+        type: GET_GRANTS_FAILURE,
         payload: { error: err.message },
       });
     });
