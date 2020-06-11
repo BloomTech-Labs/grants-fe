@@ -13,9 +13,9 @@ export const POST_GRANTS_START = "POST_GRANTS_START";
 export const POST_GRANTS_SUCCESS = "POST_GRANTS_SUCCESS";
 export const POST_GRANTS_FAILURE = "POST_GRANTS_FAILURE";
 
-export const PUT_GRANTS_START = "PUT_PROFILE_START";
-export const PUT_GRANTS_SUCCESS = "PUT_PROFILE_SUCCESS";
-export const PUT_GRANTS_FAILURE = "PUT_PROFILE_FAILURE";
+export const PUT_GRANTS_START = "PUT_GRANTS_START";
+export const PUT_GRANTS_SUCCESS = "PUT_GRANTS_SUCCESS";
+export const PUT_GRANTS_FAILURE = "PUT_GRANTS_FAILURE";
 
 export const DELETE_GRANTS_START = "DELETE_PROFILE_START";
 export const DELETE_GRANTS_SUCCESS = "DELETE_PROFILE_SUCCESS";
@@ -138,6 +138,7 @@ export const putGrants = (id, value) => (dispatch) => {
   axiosWithAuth()
     .put(`/grants/${id}`, value)
     .then((res) => {
+      console.log(res)
       dispatch({
         type: PUT_GRANTS_SUCCESS,
         payload: res.data,
