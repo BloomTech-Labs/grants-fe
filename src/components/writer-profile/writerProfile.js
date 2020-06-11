@@ -6,6 +6,9 @@ import { useStyles } from "./writerProfile.styles.js";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PropTypes from "prop-types";
 import Loader from "../loader/Loader.js";
+import {
+  EditButton
+} from "./EditProfileForms.js";
 
 import { 
   Typography, 
@@ -93,28 +96,28 @@ const WriterProfile = (props) => {
   const preventDefault = (event) => event.preventDefault();
 
 
-  const editToggle = () => {
-    dispatch(toggleEditing());
-  };
+  // const editToggle = () => {
+  //   dispatch(toggleEditing());
+  // };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const EditButton = (props) => {
-    const viewerId = props.viewerId;
-    const profileId = props.profileId;
+  // const EditButton = (props) => {
+  //   const viewerId = props.viewerId;
+  //   const profileId = props.profileId;
 
-    if(Number(viewerId) === Number(profileId)) {
-      return (
-        <Button 
-          onClick={editToggle}  
-        >
-          Edit Profile
-        </Button>
-      );
-    };
-  }; 
+  //   if(Number(viewerId) === Number(profileId)) {
+  //     return (
+  //       <Button 
+  //         onClick={editToggle}  
+  //       >
+  //         Edit Profile
+  //       </Button>
+  //     );
+  //   };
+  // }; 
 
   const editHandleChange = (event) => {
     setBioValue(event.target.value);
