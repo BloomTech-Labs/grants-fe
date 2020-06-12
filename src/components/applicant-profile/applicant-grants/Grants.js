@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getGrants,
-  getGrantsByApplicantId
-} from "../../../store/actions/grantsActions";
+import { getGrants } from "../../store/actions/grantsActions";
 import { Link } from "react-router-dom";
 import Loader from "../../loader/Loader.js";
 
@@ -16,20 +13,20 @@ const Grants = (/*grants*/) => {
   const dispatch = useDispatch();
 
   const profileId = useSelector(
-    state => state.profileInfo.profileDetails.applicant_id
+    (state) => state.profileInfo.profileDetails.applicant_id
   );
 
-  const viewerId = useSelector(state => state.login.userId);
+  const viewerId = useSelector((state) => state.login.userId);
 
-  const grants = useSelector(state => state.grants.grants);
+  const grants = useSelector((state) => state.grants.grants);
   console.log(grants);
 
   const grantProfile = useSelector(
-    state => state.profileInfo.profileDetails.id
+    (state) => state.profileInfo.profileDetails.id
   );
 
   useEffect(() => {
-    dispatch(getGrantsByApplicantId(grantProfile));
+    dispatch(getGrants());
   }, [dispatch]);
 
   return (
@@ -46,16 +43,11 @@ const Grants = (/*grants*/) => {
         {!grants || grants.length < 1 ? (
           <Loader />
         ) : (
-          grants.map(grant => {
+          grants.map((grant) => {
             return (
               <div className={classes.profilegrantcard} key={grant.id}>
                 <h4>{grant.grant_name}</h4>
                 <p>{grant.description}</p>
-                <div>
-                  <Link to={`/editgrant/${grant.id}`}>
-                    <Button>Edit</Button>
-                  </Link>
-                </div>
               </div>
             );
           })

@@ -18,7 +18,7 @@ import LandingPage from "./components/landingPage/LandingPage.js";
 import GrantsList from "./components/applicant-profile/applicant-grants/GrantsList";
 import GrantsForm from "./components/applicant-profile/applicant-grants/GrantsForm";
 import GrantsPage from "./components/grantsPage/GrantsPage.jsx";
-import UpdateGrant from "./components/applicant-profile/applicant-grants/UpdateGrant"
+import UpdateGrant from "./components/applicant-profile/applicant-grants/UpdateGrant";
 //
 function App() {
   const loggedIn = useSelector((state) => state.login.loggedIn);
@@ -40,14 +40,12 @@ function App() {
           ) : (
             <PrivateRoute path="/profile" component={WriterProfile} />
           )}
-          />
           <PrivateRoute path="/Homepage" component={Homepage} />
           {user && user.user_type === "applicant" ? (
             <PrivateRoute path="/onboarding" component={ApplicantProfileForm} />
           ) : (
             <PrivateRoute path="/onboarding" component={WriterProfileForm} />
           )}
-          />
           <Route path="/RegisterForm">
             <RegisterForm />
           </Route>
