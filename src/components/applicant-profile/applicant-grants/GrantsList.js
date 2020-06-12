@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import { deleteGrant } from "../../../store/actions/grantsActions"
 import { useStyles } from "./GrantsList.styles";
 
 export default function GrantsList() {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
   const grants = useSelector(state => state.grants.grants);
 
   return (
@@ -36,6 +38,7 @@ export default function GrantsList() {
                 <Link to={`/EditGrant/${grant.id}`}>
                   <Button>Edit</Button>
                 </Link>
+                <Button type='danger'  type='submit' onClick={() => {dispatch(deleteGrant(grant.id));}}>Delete</Button>
               </div>
             </div>
           );

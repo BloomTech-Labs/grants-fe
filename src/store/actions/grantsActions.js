@@ -152,11 +152,11 @@ export const putGrants = (id, value) => (dispatch) => {
     });
 };
 
-export const deleteGrants = (id) => (dispatch) => {
-  dispatch({ type: DELETE_GRANTS_START });
+export const deleteGrant = (id) => (dispatch) => {
+  dispatch({ type: DELETE_GRANTS_START, payload: id });
 
   axiosWithAuth()
-    .put(`/grants/${id}`)
+    .delete(`/grants/${id}`)
     .then((res) => {
       dispatch({
         type: DELETE_GRANTS_SUCCESS,

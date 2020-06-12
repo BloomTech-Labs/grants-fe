@@ -51,11 +51,6 @@ const Grants = (/*grants*/) => {
               <div className={classes.profilegrantcard} key={grant.id}>
                 <h4>{grant.grant_name}</h4>
                 <p>{grant.description}</p>
-                <div>
-                  <Link to={`/editgrant/${grant.id}`}>
-                    <Button>Edit</Button>
-                  </Link>
-                </div>
               </div>
             );
           })
