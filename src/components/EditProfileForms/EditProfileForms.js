@@ -7,15 +7,6 @@ import {
 } from "@material-ui/core";
 import { useStyles } from "./EditProfileForms.styles.js";
 
-//  const writer = useSelector((state) => state.profileInfo.profileDetails);
-//   const userId = useSelector((state) => state.login.userId);
-//   const isEditing = useSelector((state) => state.profileInfo.isEditing);
-//   const profileId = useSelector((state) => state.profileInfo.profileDetails.writer_id);
-//   const viewerId = useSelector((state) => state.login.userId);
-//   const dispatch = useDispatch();
-
-
-
 export const EditButton = (props) => {
   const viewerId = props.viewerId;
   const profileId = props.profileId;
@@ -36,36 +27,116 @@ export const EditButton = (props) => {
     };
 };
 
-export const EditWriterInfo = (props) => {
+export const EditWriterProfile = (props) => {
   const classes = useStyles();
 
   return (
     <>
       <div className={classes.editDiv}>
-        <h3 className-={classes.editTitle}>
-          Bio:
-        </h3>      
-        <Input
-          className="bio-input" 
-          type="text"
-          multiline={true}
-          autoFocus={true}
-          value={props.bioValue}
-          onChange={props.editHandleChange}
-        />
-
-        <h3 className={classes.editTtitle}>
-          Name:
-        </h3>
+        
         <div className="name-edit">
+          <h3 className={classes.editTitle}>
+            Name:
+          </h3>
           <Input
             className="first-name-input" 
+            name="first_name"
             type="text"
-            
+            autoFocus={true}
+            value={props.profile.first_name}
+            onChange={props.editHandleChange}
+          />
+          <Input
+            className="last-name-input" 
+            name="last_name"
+            type="text"
+            value={props.profile.last_name}
+            onChange={props.editHandleChange}
           />
         </div>
+        <div className={classes.location}>
+          <h3 className={classes.editTitle}>
+            Location:
+          </h3>
+          <label>
+            City: {" "}
+            <Input
+              className="edit-profile-input"
+              name="city"
+              type="text"
+              value={props.profile.city}
+              onChange={props.editHandleChange}
+            />
+          </label>
+          <label>
+            State: {" "}   
+            <Input
+              className="edit-profile-input"
+              name="state"
+              type="text"
+              value={props.profile.state}
+              onChange={props.editHandleChange}
+            />
+          </label>
+          <label>
+            Zip: {" "}
+            <Input
+              className="edit-profile-input"
+              name="zip"
+              type="text"
+              value={props.profile.zip}
+              onChange={props.editHandleChange}
+            />
+          </label>
+          <label>
+            Country: {" "}
+            <Input
+              className="edit-profile-input"
+              name="country"
+              type="text"
+              value={props.profile.country}
+              onChange={props.editHandleChange}
+            />
+          </label>
+        </div>
 
-
+        <div className={classes.moreInfo}>
+          <h3 className={classes.editTitle}>
+            More About Me:
+          </h3>
+          <label>
+            Bio: {" "}  
+            <Input
+              className="edit-profile-input"
+              name="bio" 
+              type="text"
+              multiline={true}
+              fullWidth={true}
+              value={props.profile.bio}
+              onChange={props.editHandleChange}
+            />
+          </label>
+          <label>
+            Sector: {" "}
+            <Input 
+              className="edit-profile-input"
+              name="sector"
+              type="text"
+              value={props.profile.sector}
+              onChange={props.editHandleChange}
+            />
+          </label>
+          <label>
+            Website: {" "}
+            <Input 
+              className="edit-profile-input"
+              name="website"
+              type="text"
+              value={props.profile.website}
+              onChange={props.editHandleChange}
+            />  
+          </label>      
+        </div>
 
         <Button
           type="submit"
@@ -75,5 +146,7 @@ export const EditWriterInfo = (props) => {
         </Button>
       </div>
     </>
-  )
-}
+  );
+};
+
+//I want to refactor the above so that it renders differently based on the user type, accepting a prop in the component that tell it which user type the profile is. That way we can avoid repeating code for a few table differences. 

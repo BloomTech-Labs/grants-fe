@@ -9,8 +9,7 @@ import PropTypes from "prop-types";
 import Loader from "../loader/Loader.js";
 import {
   EditButton,
-  EditBioField,
-  EditWriterInfo
+  EditWriterProfile
 } from "../EditProfileForms/EditProfileForms.js";
 
 import { 
@@ -20,14 +19,12 @@ import {
   Tab,
   Link,
   Box,
-  Input,
   Card,
   CardContent 
 } from '@material-ui/core';
 
 import { 
   getWriterInfo, 
-  toggleEditing, 
   updateWriterProfile 
 } from "../../store/actions/profileActions.js";
 
@@ -94,7 +91,7 @@ const WriterProfile = (props) => {
   const viewerId = useSelector((state) => state.login.userId);
 
   const [value, setValue] = React.useState(0);
-  const [profileValue, setProfileValue] = useState({
+  const [profile, setProfile] = useState({
     first_name: writer.first_name,
     last_name: writer.last_name,
     bio: writer.bio,
@@ -102,7 +99,8 @@ const WriterProfile = (props) => {
     state: writer.state,
     zip: writer.zip,
     country: writer.country,
-    sector: writer.sector
+    sector: writer.sector,
+    website: writer.website
   });
 
   useEffect(() => {
@@ -119,12 +117,15 @@ const WriterProfile = (props) => {
   };
 
   const editHandleChange = (event) => {
-    setBioValue(event.target.value);
+    setProfile({
+      ...profile,
+      [event.target.name]: event.target.value
+    });
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(updateWriterProfile(userId, {bio: bioValue}));
+    dispatch(updateWriterProfile(userId, profile));
     dispatch(getWriterInfo(userId));
 
   };
@@ -171,15 +172,15 @@ const WriterProfile = (props) => {
                   viewerId={viewerId}
                   profileId={profileId}
                 />
-                {/*This is only rendered if the vierId matches the ProfileId...only the profile owner has the option to edit their profile.*/}
+                {/*This is only rendered if the viewerId matches the ProfileId...only the profile owner has the option to edit their profile.*/}
               </>
             )}
           </div>
           {writer && (
             <>
               {isEditing === true ? (
-                <EditWriterInfo 
-                  bioValue={bioValue}
+                <EditWriterProfile 
+                  profile={profile}
                   editHandleChange={editHandleChange}
                   handleSubmit={handleSubmit}
                 />
