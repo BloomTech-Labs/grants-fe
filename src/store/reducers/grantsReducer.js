@@ -91,7 +91,7 @@ const grantsReducer = (state = initialState, action) => {
 
     case PUT_GRANTS_SUCCESS:
       return {
-        grants: action.payload,
+        ...state,
         isLoading: false,
       };
 
@@ -109,7 +109,8 @@ const grantsReducer = (state = initialState, action) => {
 
     case DELETE_GRANTS_SUCCESS:
       return {
-        grants: action.payload,
+        ...state,
+        grants: state.grants.filter((grant) => grant.id !== action.payload),
         isLoading: false,
       };
 

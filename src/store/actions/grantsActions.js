@@ -1,63 +1,47 @@
-// import { axiosWithAuth } from "../../utils/axiosWithAuth";
-
-// ================DON'T NEED THIS STUFF (when BE is up)================
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import { grantDetails } from "../dummyData/data.jsx";
-import axios from "axios";
 
 export const GET_GRANTS_START = "GET_GRANTS_START";
 export const GET_GRANTS_SUCCESS = "GET_GRANTS_SUCCESS";
 export const GET_GRANTS_FAILURE = "GET_GRANTS_FAILURE";
 
-export const GET_APPLICANT_GRANTS_START = "GET_APPLICANT_GRANTS_START";
-export const GET_APPLICANT_GRANTS_SUCCESS = "GET_APPLICANT_GRANTS_SUCCESS";
-export const GET_APPLICANT_GRANTS_FAILURE = "GET_APPLICANT_GRANTS_FAILURE";
-
 export const POST_GRANTS_START = "POST_GRANTS_START";
 export const POST_GRANTS_SUCCESS = "POST_GRANTS_SUCCESS";
 export const POST_GRANTS_FAILURE = "POST_GRANTS_FAILURE";
 
-export const PUT_GRANTS_START = "PUT_PROFILE_START";
-export const PUT_GRANTS_SUCCESS = "PUT_PROFILE_SUCCESS";
-export const PUT_GRANTS_FAILURE = "PUT_PROFILE_FAILURE";
+export const PUT_GRANTS_START = "PUT_GRANTS_START";
+export const PUT_GRANTS_SUCCESS = "PUT_GRANTS_SUCCESS";
+export const PUT_GRANTS_FAILURE = "PUT_GRANTS_FAILURE";
 
-export const DELETE_GRANTS_START = "DELETE_PROFILE_START";
-export const DELETE_GRANTS_SUCCESS = "DELETE_PROFILE_SUCCESS";
-export const DELETE_GRANTS_FAILURE = "DELETE_PROFILE_FAILURE";
+export const DELETE_GRANTS_START = "DELETE_GRANTS_START";
+export const DELETE_GRANTS_SUCCESS = "DELETE_GRANTS_SUCCESS";
+export const DELETE_GRANTS_FAILURE = "DELETE_GRANTS_FAILURE";
 
-// //==================UNCOMMENT THE SECTION BELOW===============================
-// /*
-const apiBase = "https://<>.herokuapp.com/api";
-
-export const getGrants = (info) => (dispatch) => {
+export const getGrants = () => (dispatch) => {
   dispatch({ type: GET_GRANTS_START });
   axiosWithAuth()
     .get("/grants/")
     .then((res) => {
-      // console.log("getGrants>res: ", res);
       dispatch({ type: GET_GRANTS_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log("getGrants>err: ", err);
       dispatch({ type: GET_GRANTS_FAILURE, payload: { error: err.message } });
     });
 };
 
 export const getGrantsByApplicantId = (id) => (dispatch) => {
-  dispatch({ type: GET_APPLICANT_GRANTS_START });
-  console.log("getGrantsByApplicantId: ", id);
+  dispatch({ type: GET_GRANTS_START });
 
   axiosWithAuth()
-    .get(`/grants/user/${id}`)
+    .get(`grants/user/${id}`)
     .then((res) => {
       dispatch({
-        type: GET_APPLICANT_GRANTS_SUCCESS,
+        type: GET_GRANTS_SUCCESS,
         payload: res.data,
       });
     })
     .catch((err) => {
       dispatch({
-        type: GET_APPLICANT_GRANTS_FAILURE,
+        type: GET_GRANTS_FAILURE,
         payload: { error: err.message },
       });
     });
@@ -67,7 +51,6 @@ export const getGrantsByApplicantId = (id) => (dispatch) => {
 // applicant_profile_id = profile:id (not profile:applicant_id) //
 export const postGrants = (value) => (dispatch) => {
   dispatch({ type: POST_GRANTS_START });
-
   axiosWithAuth()
     .post(`/grants/new`, value)
     .then((res) => {
@@ -103,11 +86,11 @@ export const putGrants = (id, value) => (dispatch) => {
     });
 };
 
-export const deleteGrants = (id) => (dispatch) => {
-  dispatch({ type: DELETE_GRANTS_START });
+export const deleteGrant = (id) => (dispatch) => {
+  dispatch({ type: DELETE_GRANTS_START, payload: id });
 
   axiosWithAuth()
-    .put(`/grants/${id}`)
+    .delete(`/grants/${id}`)
     .then((res) => {
       dispatch({
         type: DELETE_GRANTS_SUCCESS,
