@@ -63,14 +63,13 @@ function a11yProps(index) {
 }
 
 const WriterProfile = (props) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const workClasses = workStyles();
 
   //Redux
   const writer = useSelector((state) => state.profileInfo.profileDetails);
   const userId = useSelector((state) => state.login.userId);
-  const dispatch = useDispatch();
-  console.log(writer);
   useEffect(() => {
     dispatch(getWriterInfo(userId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -99,7 +98,7 @@ const WriterProfile = (props) => {
             {writer && (
               <div className={classes.userName}>
                 {" "}
-                {writer.first_name} &#160;
+                {writer.first_name}
                 {writer.last_name}
               </div>
             )}
