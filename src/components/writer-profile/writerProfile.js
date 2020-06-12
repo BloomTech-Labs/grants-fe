@@ -99,7 +99,7 @@ const WriterProfile = (props) => {
             {writer && (
               <div className={classes.userName}>
                 {" "}
-                {writer.first_name}
+                {writer.first_name} &#160;
                 {writer.last_name}
               </div>
             )}
@@ -167,6 +167,7 @@ const WriterProfile = (props) => {
           <h3 className={classes.finalGrid}>
             Work History:
             {writer &&
+              writer.workHistory &&
               writer.workHistory.map((writersWorkHistory) => (
                 <Card
                   className={workClasses.cardRoot}
