@@ -18,6 +18,7 @@ import {
 
 const initialState = {
   grants: [],
+  profileGrants: [],
   isLoading: false,
   error: undefined,
 };
@@ -54,7 +55,7 @@ const grantsReducer = (state = initialState, action) => {
       return {
         ...state,
         error: "",
-        grants: action.payload,
+        profileGrants: action.payload,
         isLoading: false,
       };
     case GET_APPLICANT_GRANTS_FAILURE:
