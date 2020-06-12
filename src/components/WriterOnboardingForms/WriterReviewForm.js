@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import WriterContactInfoForm from "./WriterContactInfoForm";
 import WriterEducationForm from "./WriterEducationForm";
 import WriterWorkHistoryForm from "./WriterWorkHistoryForm";
+import WriterWorkCard from "./WriterWorkCard";
 import WriterBioForm from "./WriterBioForm";
 
 export default function ReviewForm({
@@ -27,6 +29,7 @@ export default function ReviewForm({
   disableWorkHistorySubmitButton,
   setDisableWorkHistorySubmitButton,
   setBioFormState,
+  writersWorkHistory,
 }) {
   return (
     <>
@@ -61,6 +64,16 @@ export default function ReviewForm({
         handleValidation={handleValidation}
         enableButton={enableButton}
       />
+      {writersWorkHistory &&
+        writersWorkHistory.map((writersWork) => {
+          return (
+            <WriterWorkCard
+              handleWorkHistoryChanges={handleWorkHistoryChanges}
+              writersWork={writersWork}
+              key={writersWork.id}
+            />
+          );
+        })}
       <WriterBioForm
         bioFormState={bioFormState}
         setBioFormState={setBioFormState}

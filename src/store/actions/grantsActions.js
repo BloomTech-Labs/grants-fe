@@ -1,9 +1,4 @@
-// import { axiosWithAuth } from "../../utils/axiosWithAuth";
-
-// ================DON'T NEED THIS STUFF (when BE is up)================
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import { grantDetails } from "../dummyData/data.jsx";
-import axios from "axios";
 
 export const GET_GRANTS_START = "GET_GRANTS_START";
 export const GET_GRANTS_SUCCESS = "GET_GRANTS_SUCCESS";
@@ -21,6 +16,7 @@ export const DELETE_GRANTS_START = "DELETE_PROFILE_START";
 export const DELETE_GRANTS_SUCCESS = "DELETE_PROFILE_SUCCESS";
 export const DELETE_GRANTS_FAILURE = "DELETE_PROFILE_FAILURE";
 
+<<<<<<< HEAD
 // //==================UNCOMMENT THE SECTION BELOW===============================
 // /*
 // const apiBase = "https://<>.herokuapp.com/api";
@@ -90,6 +86,17 @@ export const getGrants = (id) => (dispatch) => {
         type: GET_GRANTS_FAILURE,
         payload: { error: err.message },
       });
+=======
+export const getGrants = () => (dispatch) => {
+  dispatch({ type: GET_GRANTS_START });
+  axiosWithAuth()
+    .get("/grants/")
+    .then((res) => {
+      dispatch({ type: GET_GRANTS_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      dispatch({ type: GET_GRANTS_FAILURE, payload: { error: err.message } });
+>>>>>>> master
     });
 };
 
@@ -113,9 +120,9 @@ export const getGrantsByApplicantId = (id) => (dispatch) => {
 };
 
 /* MAY NEED TO BE REFACTORED TO POST TO A PARTICULAR USER */
+// applicant_profile_id = profile:id (not profile:applicant_id) //
 export const postGrants = (value) => (dispatch) => {
   dispatch({ type: POST_GRANTS_START });
-  
   axiosWithAuth()
     .post(`/grants/new`, value)
     .then((res) => {

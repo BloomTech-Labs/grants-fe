@@ -23,7 +23,7 @@ export default function ApplicantContactInfo({
   setDisableWorkHistorySubmitButton,
 }) {
   const classes = useStyles();
-
+  console.log({ writersWorkHistory });
   useEffect(() => {
     enableButton();
     /* handles whether the button to submit a work history is disabled based on required fields */
@@ -53,6 +53,7 @@ export default function ApplicantContactInfo({
     workHistoryFormState.current_position,
     setDisableWorkHistorySubmitButton,
   ]);
+
   return (
     <div className={classes.container}>
       <Typography variant="h6" gutterBottom color="primary">
@@ -166,6 +167,7 @@ export default function ApplicantContactInfo({
             writersWorkHistory.map((writersWork) => {
               return (
                 <WriterWorkCard
+                  handleWorkHistoryChanges={handleWorkHistoryChanges}
                   writersWork={writersWork}
                   key={writersWork.id}
                 />
