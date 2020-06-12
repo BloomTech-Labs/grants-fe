@@ -4,7 +4,7 @@ import BioCard from "./BioCard";
 import Grants from "./applicant-grants/Grants";
 import LeftPanel from "./LeftPanel";
 import { useSelector, useDispatch } from "react-redux";
-import { getProfileInfo } from "../../store/actions/profileActions";
+import { getApplicantInfo } from "../../store/actions/profileActions";
 import Loader from "../loader/Loader.js";
 
 import { useStyles } from "./ApplicantProfile.styles";
@@ -19,7 +19,7 @@ export default function ApplicantProfile() {
   const classes = useStyles();
 
   useEffect(() => {
-    dispatch(getProfileInfo(applicant_id));
+    dispatch(getApplicantInfo(applicant_id));
   }, [dispatch, applicant_id]);
 
   return (

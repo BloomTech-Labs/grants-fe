@@ -2,9 +2,6 @@ import {
   GET_GRANTS_START,
   GET_GRANTS_SUCCESS,
   GET_GRANTS_FAILURE,
-  GET_APPLICANT_GRANTS_START,
-  GET_APPLICANT_GRANTS_SUCCESS,
-  GET_APPLICANT_GRANTS_FAILURE,
   POST_GRANTS_START,
   POST_GRANTS_SUCCESS,
   POST_GRANTS_FAILURE,
@@ -39,25 +36,6 @@ const grantsReducer = (state = initialState, action) => {
         isLoading: false,
       };
     case GET_GRANTS_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-        isLoading: false,
-      };
-    case GET_APPLICANT_GRANTS_START:
-      return {
-        ...state,
-        error: "",
-        isLoading: true,
-      };
-    case GET_APPLICANT_GRANTS_SUCCESS:
-      return {
-        ...state,
-        error: "",
-        grants: action.payload,
-        isLoading: false,
-      };
-    case GET_APPLICANT_GRANTS_FAILURE:
       return {
         ...state,
         error: action.payload,
@@ -108,7 +86,8 @@ const grantsReducer = (state = initialState, action) => {
 
     case DELETE_GRANTS_SUCCESS:
       return {
-        grants: action.payload,
+        ...state, 
+        grants: state.grants.filter(grant => grant.id !== action.payload),
         isLoading: false,
       };
 
