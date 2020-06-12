@@ -90,7 +90,7 @@ const grantsReducer = (state = initialState, action) => {
 
     case PUT_GRANTS_SUCCESS:
       return {
-        grants: action.payload,
+        ...state,
         isLoading: false,
       };
 

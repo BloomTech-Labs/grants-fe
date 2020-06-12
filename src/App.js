@@ -15,9 +15,10 @@ import WriterProfileForm from "./components/WriterOnboardingForms/WriterProfileF
 import RegisterForm from "./components/register/registerForm.js";
 import LoginForm from "./components/login/loginForm.js";
 import LandingPage from "./components/landingPage/LandingPage.js";
-import GrantsList from "./components/applicant-profile/GrantsList";
-import GrantsForm from "./components/applicant-profile/GrantsForm";
+import GrantsList from "./components/applicant-profile/applicant-grants/GrantsList";
+import GrantsForm from "./components/applicant-profile/applicant-grants/GrantsForm";
 import GrantsPage from "./components/grantsPage/GrantsPage.jsx";
+import UpdateGrant from "./components/applicant-profile/applicant-grants/UpdateGrant";
 //
 function App() {
   const loggedIn = useSelector((state) => state.login.loggedIn);
@@ -31,6 +32,7 @@ function App() {
         </Route>
         {loggedIn && <Navbar />}
         <Switch>
+          <PrivateRoute path="/EditGrant/:id" component={UpdateGrant} />
           <PrivateRoute path="/GrantsForm" component={GrantsForm} />
           <PrivateRoute path="/GrantsList" component={GrantsList} />
           {userType && userType === "applicant" ? (
@@ -38,14 +40,12 @@ function App() {
           ) : (
             <PrivateRoute path="/profile" component={WriterProfile} />
           )}
-          />
           <PrivateRoute path="/Homepage" component={Homepage} />
           {user && user.user_type === "applicant" ? (
             <PrivateRoute path="/onboarding" component={ApplicantProfileForm} />
           ) : (
             <PrivateRoute path="/onboarding" component={WriterProfileForm} />
           )}
-          />
           <Route path="/RegisterForm">
             <RegisterForm />
           </Route>

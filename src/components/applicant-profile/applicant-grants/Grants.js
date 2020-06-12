@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getGrants } from "../../store/actions/grantsActions";
 import { Link } from "react-router-dom";
-import Loader from "../loader/Loader.js";
+import Loader from "../../loader/Loader.js";
 
 import Paper from "@material-ui/core/Paper";
-import { useStyles } from "./ApplicantProfile.styles";
+import { useStyles } from "../ApplicantProfile.styles";
 import Button from "@material-ui/core/Button";
 
 const Grants = (/*grants*/) => {
@@ -18,11 +18,16 @@ const Grants = (/*grants*/) => {
 
   const viewerId = useSelector((state) => state.login.userId);
 
+  const grants = useSelector((state) => state.grants.grants);
+  console.log(grants);
+
+  const grantProfile = useSelector(
+    (state) => state.profileInfo.profileDetails.id
+  );
+
   useEffect(() => {
     dispatch(getGrants());
   }, [dispatch]);
-
-  const grants = useSelector((state) => state.grants.grantsInfo);
 
   return (
     <>
@@ -39,7 +44,6 @@ const Grants = (/*grants*/) => {
           <Loader />
         ) : (
           grants.map((grant) => {
-            console.log(grant);
             return (
               <div className={classes.profilegrantcard} key={grant.id}>
                 <h4>{grant.grant_name}</h4>
