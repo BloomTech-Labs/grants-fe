@@ -9,7 +9,13 @@ export const useStyles = makeStyles(theme => ({
     }
   },
 
-  editDiv: {
-   //styling here...
+  location: {
+   display: "flex",
+   flexDirection: "column"
+  },
+
+  moreInfo: {
+    display: "flex",
+    flexDirection: "column"
   }
 }));
