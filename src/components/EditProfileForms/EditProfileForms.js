@@ -24,14 +24,18 @@ export const EditButton = (props) => {
           Edit Profile
         </Button>
       );
+    }else {
+      return null; 
     };
 };
 
-export const EditWriterProfile = (props) => {
+export const EditProfile = (props) => {
   const classes = useStyles();
+  const userType = props.userType;
 
-  return (
-    <>
+  if (userType === "writer") {
+    return (
+      <>
       <div className={classes.editDiv}>
         
         <div className="name-edit">
@@ -146,7 +150,15 @@ export const EditWriterProfile = (props) => {
         </Button>
       </div>
     </>
-  );
+    )
+      
+  } else {
+    return (
+      <h4>Applicant Edit Form Here.</h4>
+    )
+  }
+  //if userType = writer return thing else return other thing...
+  
 };
 
 //I want to refactor the above so that it renders differently based on the user type, accepting a prop in the component that tell it which user type the profile is. That way we can avoid repeating code for a few table differences. 

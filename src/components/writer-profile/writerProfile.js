@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import Loader from "../loader/Loader.js";
 import {
   EditButton,
-  EditWriterProfile
+  EditProfile
 } from "../EditProfileForms/EditProfileForms.js";
 
 import { 
@@ -86,6 +86,7 @@ const WriterProfile = (props) => {
     dispatch(getWriterInfo(userId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
+  const userType= useSelector((state) => state.login.usertype);
   const isEditing = useSelector((state) => state.profileInfo.isEditing);
   const profileId = useSelector((state) => state.profileInfo.profileDetails.writer_id);
   const viewerId = useSelector((state) => state.login.userId);
@@ -179,10 +180,11 @@ const WriterProfile = (props) => {
           {writer && (
             <>
               {isEditing === true ? (
-                <EditWriterProfile 
+                <EditProfile 
                   profile={profile}
                   editHandleChange={editHandleChange}
                   handleSubmit={handleSubmit}
+                  userType={userType}
                 />
               ):(
 
