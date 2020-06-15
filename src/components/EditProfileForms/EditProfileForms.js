@@ -1,5 +1,5 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
 import {toggleEditing} from "../../store/actions/profileActions.js"
 import {
   Button,
@@ -32,17 +32,6 @@ export const EditButton = (props) => {
 export const EditProfile = (props) => {
   const classes = useStyles();
   const userType = props.userType;
-
-  // const handleChange = (event) => {
-  //   props.setProfile({
-  //     ...props.profile,
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
-
-  // const handleSumbit = event => {
-
-  // }
 
   if (userType === "writer") {
     return (
@@ -187,6 +176,16 @@ export const EditProfile = (props) => {
               onChange={props.editHandleChange}
             />
           </div>
+          <label>
+            Organization Name: {" "}
+            <Input
+              className="org-name-input"
+              name="org_name"
+              type="text"
+              value={props.profile.org_name}
+              onChange={props.editHandleChange}
+            />
+          </label>
           <div className={classes.location}>
             <h3 className={classes.editTitle}>
               Location:
