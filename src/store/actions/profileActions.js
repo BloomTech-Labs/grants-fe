@@ -82,7 +82,26 @@ export const updateWriterProfile = (id, updatedData) => (dispatch) => {
     })
     .catch((err) => {
       dispatch({
-        type: PUT_GRANTS_FAILURE,
+        type: PUT_PROFILE_FAILURE,
+        payload: { error: err.message}
+      });
+    });
+}; 
+
+export const updateApplicantProfile = (id, updatedData) => (dispatch) => {
+  dispatch({ type: PUT_PROFILE_START});
+
+  axiosWithAuth()
+    .put(`/applicants/${id}`, updatedData)
+    .then((res) => {
+      dispatch({
+        type: PUT_PROFILE_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: PUT_PROFILE_FAILURE,
         payload: { error: err.message}
       });
     });
