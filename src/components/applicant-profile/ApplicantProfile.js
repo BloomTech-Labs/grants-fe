@@ -6,6 +6,7 @@ import LeftPanel from "./LeftPanel";
 import { useSelector, useDispatch } from "react-redux";
 import { getApplicantInfo } from "../../store/actions/profileActions";
 import Loader from "../loader/Loader.js";
+import { EditProfile, EditButton } from "../editProfileForms/EditProfileForms.js";
 
 import { useStyles } from "./ApplicantProfile.styles";
 

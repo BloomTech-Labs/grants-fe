@@ -10,7 +10,7 @@ import Loader from "../loader/Loader.js";
 import {
   EditButton,
   EditProfile
-} from "../EditProfileForms/EditProfileForms.js";
+} from "../editProfileForms/EditProfileForms.js";
 
 import { 
   Typography, 
