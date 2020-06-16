@@ -160,8 +160,7 @@ const WriterProfile = (props) => {
               <>
                 <Link
                   classes={{ root: classes.rootLink }}
-                  href="#"
-                  onClick={preventDefault}
+                  href={`http://${writer.website}`}
                 >
                   {writer.website}
                 </Link>

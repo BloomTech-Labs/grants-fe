@@ -53,7 +53,7 @@ export default function LeftPanel({ applicantDetails }) {
           </div>
         ) }
         <div>
-        <a href={applicantDetails.website}>{applicantDetails.website}</a>
+        <a href={`http://${applicantDetails.website}`}>{applicantDetails.website}</a>
         </div>
         <div>
           <Button 

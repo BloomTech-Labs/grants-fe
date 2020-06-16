@@ -35,7 +35,7 @@ const Grants = () => {
       {userProfile.org_name === "" ? (
         <h3>Grants I'd Like to Apply For:</h3>
       ): (  
-      <h3>Grants We'd Like to Apply For:</h3>
+        <h3>Grants We'd Like to Apply For:</h3>
       )}
       <Paper className={classes.profilepaper}>
         {Number(viewerId) === Number(userProfile.applicant_id) ? (
