@@ -34,7 +34,6 @@ export default function ApplicantProfile() {
   });
 
   const handleChange = (event) => {
-    console.log(profile);
     setProfile({
       ...profile,
       [event.target.name]: event.target.value

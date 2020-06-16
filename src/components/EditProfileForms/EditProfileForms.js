@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import {toggleEditing} from "../../store/actions/profileActions.js"
 import {
   Button,
-  Input
+  Input,
+  TextField
 } from "@material-ui/core";
 import { useStyles } from "./EditProfileForms.styles.js";
 
@@ -234,8 +235,18 @@ export const EditProfile = (props) => {
 
         <div className={classes.moreInfo}>
           <h3 className={classes.editTitle}>
-            More About Me:
+            More Info:
           </h3>
+           
+            <TextField
+              label="Founding Date"
+              type="date"
+              name="founding_date"
+              className="edit-profile-input"
+              value={props.profile.founding_date}
+              onChange={props.editHandleChange}
+              InputLabelProps={{shrink: true}}
+            />
           <label>
             Bio: {" "}  
             <Input
