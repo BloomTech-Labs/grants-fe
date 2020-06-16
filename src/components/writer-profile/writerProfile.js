@@ -87,6 +87,7 @@ const WriterProfile = (props) => {
   }, [userId]);
   const userType = useSelector((state) => state.login.usertype);
   const isEditing = useSelector((state) => state.profileInfo.isEditing);
+  const isLoading = useSelector((state) => state.profileInfo.isLoading);
   const profileId = useSelector(
     (state) => state.profileInfo.profileDetails.writer_id
   );
@@ -133,7 +134,7 @@ const WriterProfile = (props) => {
   return (
     <StylesProvider>
       <GlobalCSS />
-      {writer ? (
+      {writer && !isLoading ? (
         <Paper classes={{ root: classes.rootPaper }} elevation={3}>
           {" "}
           <div>
