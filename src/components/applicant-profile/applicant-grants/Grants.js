@@ -11,11 +11,11 @@ import Paper from "@material-ui/core/Paper";
 import { useStyles } from "../ApplicantProfile.styles";
 import Button from "@material-ui/core/Button";
 
-const Grants = (/*grants*/) => {
+const Grants = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const userID = useSelector((state) => state.profileInfo.profileDetails);
+  const userProfile = useSelector((state) => state.profileInfo.profileDetails);
 
   const viewerId = useSelector((state) => state.login.userId);
 
@@ -25,14 +25,16 @@ const Grants = (/*grants*/) => {
 
   useEffect(() => {
     dispatch(getGrants());
-    dispatch(getGrantsByApplicantId(userID.id));
-  }, [dispatch]);
+    dispatch(getGrantsByApplicantId(userProfile.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userProfile.id]);
+  //
 
   return (
     <>
       <h3>Grants We'd Like to Apply For:</h3>
       <Paper className={classes.profilepaper}>
-        {Number(viewerId) === Number(userID.applicant_id) ? (
+        {Number(viewerId) === Number(userProfile.applicant_id) ? (
           <Button component={Link} to="/GrantsList">
             Edit Grants
           </Button>

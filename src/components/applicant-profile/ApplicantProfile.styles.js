@@ -60,7 +60,7 @@ export const useStyles = makeStyles(theme => ({
     marginTop: "10px"
   },
   profilepaper: {
-    backgroundColor: "lightGray",
+    backgroundColor: "#f5f5f5",
     minHeight: "65%",
     padding: theme.spacing(1),
     [theme.breakpoints.down("xs")]: {

@@ -55,7 +55,9 @@ export default function ApplicantProfile() {
 
   useEffect(() => {
     dispatch(getApplicantInfo(applicant_id));
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [applicant_id]);
+  //
 
   return (
     <div className={classes.root}>
@@ -89,5 +91,4 @@ export default function ApplicantProfile() {
       )}
     </div>
   );
-}
-//This is a test
+};
