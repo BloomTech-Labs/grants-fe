@@ -43,7 +43,8 @@ export const EditProfile = (props) => {
           <h3 className={classes.editTitle}>
             Name:
           </h3>
-          <Input
+          <TextField
+            label="First Name"
             className="first-name-input" 
             name="first_name"
             type="text"
@@ -51,7 +52,8 @@ export const EditProfile = (props) => {
             value={props.profile.first_name}
             onChange={props.editHandleChange}
           />
-          <Input
+          <TextField
+            label="Last Name"
             className="last-name-input" 
             name="last_name"
             type="text"
@@ -63,84 +65,77 @@ export const EditProfile = (props) => {
           <h3 className={classes.editTitle}>
             Location:
           </h3>
-          <label>
-            City: {" "}
-            <Input
-              className="edit-profile-input"
-              name="city"
-              type="text"
-              value={props.profile.city}
-              onChange={props.editHandleChange}
-            />
-          </label>
-          <label>
-            State: {" "}   
-            <Input
-              className="edit-profile-input"
-              name="state"
-              type="text"
-              value={props.profile.state}
-              onChange={props.editHandleChange}
-            />
-          </label>
-          <label>
-            Zip: {" "}
-            <Input
-              className="edit-profile-input"
-              name="zip"
-              type="text"
-              value={props.profile.zip}
-              onChange={props.editHandleChange}
-            />
-          </label>
-          <label>
-            Country: {" "}
-            <Input
-              className="edit-profile-input"
-              name="country"
-              type="text"
-              value={props.profile.country}
-              onChange={props.editHandleChange}
-            />
-          </label>
+          <TextField
+            label="City"
+            className="edit-profile-input"
+            name="city"
+            type="text"
+            value={props.profile.city}
+            onChange={props.editHandleChange}
+          />
+        
+          <TextField
+            label="State"
+            className="edit-profile-input"
+            name="state"
+            type="text"
+            value={props.profile.state}
+            onChange={props.editHandleChange}
+          />
+        
+          <TextField
+            label="Zip"
+            className="edit-profile-input"
+            name="zip"
+            type="text"
+            value={props.profile.zip}
+            onChange={props.editHandleChange}
+          />
+        
+        
+          <TextField
+            label="Country"
+            className="edit-profile-input"
+            name="country"
+            type="text"
+            value={props.profile.country}
+            onChange={props.editHandleChange}
+          />
         </div>
 
         <div className={classes.moreInfo}>
           <h3 className={classes.editTitle}>
             More About Me:
           </h3>
-          <label>
-            Bio: {" "}  
-            <Input
-              className="edit-profile-input"
-              name="bio" 
-              type="text"
-              multiline={true}
-              fullWidth={true}
-              value={props.profile.bio}
-              onChange={props.editHandleChange}
-            />
-          </label>
-          <label>
-            Sector: {" "}
-            <Input 
-              className="edit-profile-input"
-              name="sector"
-              type="text"
-              value={props.profile.sector}
-              onChange={props.editHandleChange}
-            />
-          </label>
-          <label>
-            Website: {" "}
-            <Input 
-              className="edit-profile-input"
-              name="website"
-              type="text"
-              value={props.profile.website}
-              onChange={props.editHandleChange}
-            />  
-          </label>      
+          
+          <TextField
+            label="Bio"
+            className="edit-profile-input"
+            name="bio" 
+            type="text"
+            multiline={true}
+            fullWidth={true}
+            value={props.profile.bio}
+            onChange={props.editHandleChange}
+          />
+      
+          <TextField
+            label="Sector" 
+            className="edit-profile-input"
+            name="sector"
+            type="text"
+            value={props.profile.sector}
+            onChange={props.editHandleChange}
+          />
+        
+          <TextField
+            label="Website" 
+            className="edit-profile-input"
+            name="website"
+            type="text"
+            value={props.profile.website}
+            onChange={props.editHandleChange}
+          />       
         </div>
 
         <Button
@@ -161,7 +156,8 @@ export const EditProfile = (props) => {
             <h3 className={classes.editTitle}>
               Name:
             </h3>
-            <Input
+            <TextField
+              label="First Name"
               className="first-name-input"
               name="first_name"
               type="text"
@@ -169,7 +165,8 @@ export const EditProfile = (props) => {
               value={props.profile.first_name}
               onChange={props.editHandleChange}
             />
-            <Input
+            <TextField
+              label="Last Name"
               className="last-name-input"
               name="last_name"
               type="text"
@@ -177,60 +174,55 @@ export const EditProfile = (props) => {
               onChange={props.editHandleChange}
             />
           </div>
-          <label>
-            Organization Name: {" "}
-            <Input
+            <TextField
+              label="Organization Name"
               className="org-name-input"
               name="org_name"
               type="text"
               value={props.profile.org_name}
               onChange={props.editHandleChange}
             />
-          </label>
+          
           <div className={classes.location}>
             <h3 className={classes.editTitle}>
               Location:
             </h3>
-            <label>
-              City: {" "}
-              <Input
-                className="edit-profile-input"
-                name="city"
-                type="text"
-                value={props.profile.city}
-                onChange={props.editHandleChange}
-              />
-            </label>
-            <label>
-            State: {" "}   
-            <Input
+            <TextField
+              label="City"
+              className="edit-profile-input"
+              name="city"
+              type="text"
+              value={props.profile.city}
+              onChange={props.editHandleChange}
+            />
+              
+            <TextField
+              label="State"
               className="edit-profile-input"
               name="state"
               type="text"
               value={props.profile.state}
               onChange={props.editHandleChange}
             />
-          </label>
-          <label>
-            Zip: {" "}
-            <Input
+   
+            <TextField
+              label="Zip"
               className="edit-profile-input"
               name="zip"
               type="text"
               value={props.profile.zip}
               onChange={props.editHandleChange}
             />
-          </label>
-          <label>
-            Country: {" "}
-            <Input
+          
+            <TextField
+              lable="Country"
               className="edit-profile-input"
               name="country"
               type="text"
               value={props.profile.country}
               onChange={props.editHandleChange}
             />
-          </label>
+          
         </div>
 
         <div className={classes.moreInfo}>
@@ -238,47 +230,44 @@ export const EditProfile = (props) => {
             More Info:
           </h3>
            
-            <TextField
-              label="Founding Date"
-              type="date"
-              name="founding_date"
-              className="edit-profile-input"
-              value={props.profile.founding_date}
-              onChange={props.editHandleChange}
-              InputLabelProps={{shrink: true}}
-            />
-          <label>
-            Bio: {" "}  
-            <Input
-              className="edit-profile-input"
-              name="bio" 
-              type="text"
-              multiline={true}
-              fullWidth={true}
-              value={props.profile.bio}
-              onChange={props.editHandleChange}
-            />
-          </label>
-          <label>
-            Sector: {" "}
-            <Input 
-              className="edit-profile-input"
-              name="sector"
-              type="text"
-              value={props.profile.sector}
-              onChange={props.editHandleChange}
-            />
-          </label>
-          <label>
-            Website: {" "}
-            <Input 
-              className="edit-profile-input"
-              name="website"
-              type="text"
-              value={props.profile.website}
-              onChange={props.editHandleChange}
-            />  
-          </label>      
+          <TextField
+            label="Founding Date"
+            type="date"
+            name="founding_date"
+            className="edit-profile-input"
+            value={props.profile.founding_date}
+            onChange={props.editHandleChange}
+            InputLabelProps={{shrink: true}}
+          />
+        
+          <TextField
+            label="Bio"
+            className="edit-profile-input"
+            name="bio" 
+            type="text"
+            multiline={true}
+            fullWidth={true}
+            value={props.profile.bio}
+            onChange={props.editHandleChange}
+          />
+        
+          <TextField
+            label="Sector" 
+            className="edit-profile-input"
+            name="sector"
+            type="text"
+            value={props.profile.sector}
+            onChange={props.editHandleChange}
+          />
+        
+          <TextField
+            label="Website" 
+            className="edit-profile-input"
+            name="website"
+            type="text"
+            value={props.profile.website}
+            onChange={props.editHandleChange}
+          />        
         </div>
 
         <Button
