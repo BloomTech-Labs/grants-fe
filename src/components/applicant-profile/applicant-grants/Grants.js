@@ -21,6 +21,8 @@ const Grants = (/*grants*/) => {
 
   const grants = useSelector((state) => state.grants.profileGrants);
 
+  const isLoading = useSelector((state) => state.grants.isLoading);
+
   useEffect(() => {
     dispatch(getGrants());
     dispatch(getGrantsByApplicantId(userID.id));
@@ -37,7 +39,7 @@ const Grants = (/*grants*/) => {
         ) : (
           <div> </div>
         )}
-        {!grants || grants.length < 1 ? (
+        {isLoading ? (
           <Loader />
         ) : (
           grants.map((grant) => {

@@ -19,6 +19,7 @@ export default function ApplicantProfile() {
   const applicantDetails = useSelector(
     (state) => state.profileInfo.profileDetails
   );
+  const isLoading = useSelector((state) => state.profileInfo.isLoading);
   const grants = useSelector((state) => state.grants);
   const classes = useStyles();
 
@@ -58,7 +59,7 @@ export default function ApplicantProfile() {
 
   return (
     <div className={classes.root}>
-      {applicantDetails ? (
+      {!isLoading ? (
         <div>
           <Grid className={classes.profile}>
             <div className={classes.leftpanel}>
