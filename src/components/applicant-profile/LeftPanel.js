@@ -16,6 +16,21 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(20),
     height: theme.spacing(20),
   },
+  userName: {
+    width: "100%",
+    textAlign: "center",
+    fontSize: "0.850rem",
+    fontFamily: "Roboto, Helvetica, Arial, sansSerif",
+    fontWeight: "500",
+    lineHeight: "1.57",
+    letterSpacing: "0.00714em",
+    [theme.breakpoints.up("md")]: {
+      width: "100%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "1.2rem",
+    },
+  }
 }));
 
 export default function LeftPanel({ applicantDetails }) {
@@ -28,15 +43,31 @@ export default function LeftPanel({ applicantDetails }) {
         <div>
           <AccountCircleIcon className={classes.large} />
         </div>
+        {applicantDetails.org_name === "" ? (
+          <div className={classes.userName}>
+            {applicantDetails.first_name}{" "}{applicantDetails.last_name}
+          </div>
+        ): (
+          <div className={classes.userName}>
+            {applicantDetails.org_name}
+          </div>
+        ) }
         <div>
-          <Button variant="contained" color="primary" href="#">
+        <a href={applicantDetails.website}>{applicantDetails.website}</a>
+        </div>
+        <div>
+          <Button 
+            variant="contained" color="primary" href="#">
             Direct Message
           </Button>
         </div>
-        <div>Visit Our website:</div>
-        <a href={applicantDetails.website}>{applicantDetails.website}</a>
+        <div>
+        <EditButton 
+          viewerId={viewerId} 
+          profileId={profileId} 
+        />
+        </div>
       </div>
-      <EditButton viewerId={viewerId} profileId={profileId} />
     </>
   );
 }

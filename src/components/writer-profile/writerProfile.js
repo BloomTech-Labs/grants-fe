@@ -182,7 +182,7 @@ const WriterProfile = (props) => {
                 />
               ) : (
                 <h3 className={classes.userEducation}>
-                  Bio:
+                  {writer.first_name}{" "}{writer.last_name}
                   <div className={classes.bodyText}>{writer.bio}</div>
                 </h3>
               )}
