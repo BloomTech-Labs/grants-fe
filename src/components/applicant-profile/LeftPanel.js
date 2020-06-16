@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Button from "@material-ui/core/Button";
-import { EditButton } from "../editProfileForms/EditProfileForms.js"
+import { EditButton } from "../EditProfileForms/EditProfileForms.js"
 
 const useStyles = makeStyles((theme) => ({
   root: {
