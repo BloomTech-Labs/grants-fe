@@ -8,9 +8,9 @@ import {
   POST_GRANTS_START,
   POST_GRANTS_SUCCESS,
   POST_GRANTS_FAILURE,
-  PUT_GRANTS_START,
-  PUT_GRANTS_SUCCESS,
-  PUT_GRANTS_FAILURE,
+  // PUT_GRANTS_START,
+  // PUT_GRANTS_SUCCESS,
+  // PUT_GRANTS_FAILURE,
   DELETE_GRANTS_START,
   DELETE_GRANTS_SUCCESS,
   DELETE_GRANTS_FAILURE,
@@ -83,43 +83,43 @@ const grantsReducer = (state = initialState, action) => {
         isLoading: false,
       };
 
-    case PUT_GRANTS_START:
-      return {
-        ...state,
-        isLoading: true,
-      };
+    // case PUT_GRANTS_START:
+    //   return {
+    //     ...state,
+    //     isLoading: true,
+    //   };
 
-    case PUT_GRANTS_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-      };
+    // case PUT_GRANTS_SUCCESS:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //   };
 
-    case PUT_GRANTS_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-        isLoading: false,
-      };
-    case DELETE_GRANTS_START:
-      return {
-        ...state,
-        isLoading: true,
-      };
+    // case PUT_GRANTS_FAILURE:
+    //   return {
+    //     ...state,
+    //     error: action.payload,
+    //     isLoading: false,
+    //   };
+    // case DELETE_GRANTS_START:
+    //   return {
+    //     ...state,
+    //     isLoading: true,
+    //   };
 
-    case DELETE_GRANTS_SUCCESS:
-      return {
-        ...state,
-        grants: state.grants.filter((grant) => grant.id !== action.payload),
-        isLoading: false,
-      };
+    // case DELETE_GRANTS_SUCCESS:
+    //   return {
+    //     ...state,
+    //     grants: state.grants.filter((grant) => grant.id !== action.payload),
+    //     isLoading: false,
+    //   };
 
-    case DELETE_GRANTS_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-        isLoading: false,
-      };
+    // case DELETE_GRANTS_FAILURE:
+    //   return {
+    //     ...state,
+    //     error: action.payload,
+    //     isLoading: false,
+    //   };
     default:
       return state;
   }

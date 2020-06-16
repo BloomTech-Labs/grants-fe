@@ -9,20 +9,23 @@ import Button from "@material-ui/core/Button";
 import { ValidatorForm } from "react-material-ui-form-validator";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "./GrantsForm.styles";
+import { deleteGrant } from "../../../store/actions/grantsActions";
 
 import {
   putGrants,
   getGrantsByApplicantId
 } from "../../../store/actions/grantsActions";
+import { getApplicantInfo } from "../../../store/actions/profileActions";
 
-export default function GrantsForm() {
+export default function UpdateGrant() {
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
+  const userID = useSelector(state => state.login.userId)
   const applicant_id = useSelector(
     state => state.profileInfo.profileDetails.id
   );
-  const grants = useSelector(state => state.grants.grants);
+  const grants = useSelector(state => state.profileInfo.profileDetails.grants);
   const { id } = useParams();
 
   const [grant, setGrant] = useState({
@@ -49,8 +52,9 @@ export default function GrantsForm() {
   const handleSubmit = async e => {
     e.preventDefault();
     dispatch(putGrants(id, grant));
-    dispatch(getGrantsByApplicantId(applicant_id));
+    dispatch(getApplicantInfo(userID))
     await history.push("/GrantsList");
+    console.log(grant, id)
   };
 
   return (
@@ -122,7 +126,14 @@ export default function GrantsForm() {
           </Grid>
           <div className={classes.addbutton}>
             <Button type="submit" variant="contained" color="primary">
-              Update Grant
+              Update
+            </Button>
+            <Button variant="contained" color="primary" onClick={() => {
+                    dispatch(deleteGrant(grant.id));
+                    dispatch(getApplicantInfo(userID))
+                    history.push("/GrantsList")
+                  }}>
+              Delete
             </Button>
           </div>
         </Grid>

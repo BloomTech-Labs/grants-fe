@@ -29,7 +29,7 @@ export const getGrants = () => (dispatch) => {
     })
     .catch((err) => {
       dispatch({ type: GET_GRANTS_FAILURE, payload: { error: err.message } });
-    });
+    })
 };
 
 export const getGrantsByApplicantId = (id) => (dispatch) => {
@@ -81,6 +81,7 @@ export const putGrants = (id, value) => (dispatch) => {
         type: PUT_GRANTS_SUCCESS,
         payload: res.data,
       });
+      
     })
     .catch((err) => {
       dispatch({
