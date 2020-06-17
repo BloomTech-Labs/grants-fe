@@ -55,7 +55,7 @@ export default function UpdateGrant() {
     dispatch(putGrants(id, grant));
     dispatch(getGrantsByApplicantId(applicant_id))
     await history.push("/GrantsList");
-    console.log(grant, id)
+    console.log(grant, id);
   };
 
   return (
@@ -129,11 +129,15 @@ export default function UpdateGrant() {
             <Button type="submit" variant="contained" color="primary">
               Update
             </Button>
-            <Button variant="contained" color="primary" onClick={() => {
-                    dispatch(deleteGrant(grant.id));
-                    dispatch(getGrantsByApplicantId(applicant_id))
-                    history.push("/GrantsList")
-                  }}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                dispatch(deleteGrant(grant.id));
+                dispatch(getGrantsByApplicantId(applicant_id));
+                history.push("/GrantsList");
+              }}
+            >
               Delete
             </Button>
           </div>
