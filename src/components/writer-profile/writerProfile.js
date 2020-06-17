@@ -112,8 +112,6 @@ const WriterProfile = (props) => {
   }, [userId]);
   //
 
-  const preventDefault = (event) => event.preventDefault();
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -148,16 +146,9 @@ const WriterProfile = (props) => {
                 {writer.first_name} {writer.last_name}
               </div>
             )}
-            <Button
-              classes={{ root: classes.rootButton, label: classes.labelButton }}
-              variant="contained"
-              color="primary"
-              href="#contained-buttons"
-            >
-              Direct Message
-            </Button>
             {writer && (
               <>
+              <div className={classes.leftPanel}>
                 <Link
                   classes={{ root: classes.rootLink }}
                   href={`http://${writer.website}`}
@@ -165,8 +156,23 @@ const WriterProfile = (props) => {
                   {writer.website}
                 </Link>
 
-                <EditButton viewerId={viewerId} profileId={profileId} />
+                <Button
+                  classes={{ root: classes.rootButton, label: classes.labelButton }}
+                  variant="contained"
+                  color="primary"
+                  href="#contained-buttons"
+                >
+                  Direct Message
+                </Button>
+                <div>  
+                <EditButton 
+                  classes={classes.editButton}
+                  viewerId={viewerId} 
+                  profileId={profileId} 
+                />
                 {/*This is only rendered if the viewerId matches the ProfileId...only the profile owner has the option to edit their profile.*/}
+                </div>
+              </div>
               </>
             )}
           </div>
@@ -193,10 +199,6 @@ const WriterProfile = (props) => {
             <div className={classes.educationText}>
               Education:<div className={classes.bodyText}>USC 2010-2014</div>
             </div>
-            {/* <div className={classes.educationText}>
-              Work History:
-              <div className={classes.bodyText}>DSC 2010-2014</div>
-            </div> */}
           </h3>
           <div></div>
           <div className={classes.userServices}>
