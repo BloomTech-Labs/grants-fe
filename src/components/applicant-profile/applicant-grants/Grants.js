@@ -14,7 +14,7 @@ const Grants = ({ applicantDetails }) => {
   const viewerId = useSelector((state) => state.login.userId);
 
   const grants = useSelector(
-    (state) => state.profileInfo.profileDetails.grants
+    (state) => state.profileInfo.profileDetails.grants);
 
   return (
     <>
