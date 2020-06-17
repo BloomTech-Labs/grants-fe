@@ -15,13 +15,18 @@ import { EditProfile } from "../EditProfileForms/EditProfileForms.js";
 import { useStyles } from "./ApplicantProfile.styles";
 
 export default function ApplicantProfile() {
-  const dispatch = useDispatch();
-  const applicant_id = useSelector(state => state.login.userId);
+  const userType = useSelector(state => state.login.usertype);
+  const isEditing = useSelector(state => state.profileInfo.isEditing);
+  const applicantProfileId = useSelector(
+    state => state.profileInfo.profileDetails.applicant_id
+  );
   const applicantDetails = useSelector(
     state => state.profileInfo.profileDetails
   );
   const grants = useSelector(state => state.grants);
-  // const applicantGrants = useSelector((state) => state.grants.);
+
+  const dispatch = useDispatch();
+
   const classes = useStyles();
 
   const [profile, setProfile] = useState({
@@ -45,19 +50,16 @@ export default function ApplicantProfile() {
     });
   };
 
-  const userType = useSelector(state => state.login.usertype);
-  const isEditing = useSelector(state => state.profileInfo.isEditing);
-
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(updateApplicantProfile(applicantDetails.applicant_id, profile));
-    dispatch(getApplicantInfo(applicantDetails.applicant_id));
+    dispatch(updateApplicantProfile(applicantProfileId, profile));
+    dispatch(getApplicantInfo(applicantProfileId));
   };
 
   useEffect(() => {
-    dispatch(getApplicantInfo(applicant_id));
-    dispatch(getGrantsByApplicantId(applicant_id));
-  }, [dispatch, applicant_id]);
+    dispatch(getApplicantInfo(applicantProfileId));
+    dispatch(getGrantsByApplicantId(applicantProfileId));
+  }, [dispatch, applicantProfileId]);
 
   return (
     <div className={classes.root}>
@@ -92,4 +94,3 @@ export default function ApplicantProfile() {
     </div>
   );
 }
-//This is a test

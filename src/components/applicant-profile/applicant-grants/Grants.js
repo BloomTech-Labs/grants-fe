@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../../loader/Loader.js";
 
@@ -9,13 +9,10 @@ import Button from "@material-ui/core/Button";
 
 const Grants = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
 
   const userID = useSelector(state => state.profileInfo.profileDetails);
-
   const viewerId = useSelector(state => state.login.userId);
-
-  const grants = useSelector(state => state.profileInfo.profileDetails.grants);
+  const grants = useSelector(state => state.grants.applicantGrants);
 
   return (
     <>
