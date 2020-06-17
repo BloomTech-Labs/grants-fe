@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
@@ -28,25 +28,30 @@ export default function GrantsList() {
           </Button>
         </div>
       </Grid>
-      <Paper>
-        {grantsLoading === true ? (
-          <Loader />
-        ) : (
-          grants.map(grant => {
-            return (
-              <div key={grant.id}>
-                <h3>{grant.grant_name}</h3>
-                <p>{grant.description}</p>
-                <div>
-                  <Link to={`/EditGrant/${grant.id}`}>
-                    <Button>Edit</Button>
-                  </Link>
+      <div>
+        <Paper className={classes.grantslistbody}>
+          {grantsLoading === true ? (
+            <Loader />
+          ) : (
+            grants.map(grant => {
+              return (
+                <div className={classes.grantscard} key={grant.id}>
+                  <div className={classes.grantscardheader}>
+                    <h3>{grant.grant_name}</h3>
+                    <div>
+                      <Link to={`/EditGrant/${grant.id}`}>
+                        <Button>Edit</Button>
+                      </Link>
+                    </div>
+                  </div>
+                  <div>Awarding Agency: {grant.awarding_agency}</div>
+                  <p>{grant.description}</p>
                 </div>
-              </div>
-            );
-          })
-        )}
-      </Paper>
+              );
+            })
+          )}
+        </Paper>
+      </div>
     </div>
   );
 }
