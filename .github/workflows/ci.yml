@@ -21,3 +21,6 @@ jobs:
               debug: true,
             },
         }
+    checks:
+      simlar-code:
+        enabled: false
