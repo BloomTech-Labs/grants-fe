@@ -5,7 +5,7 @@ export const useStyles = makeStyles(theme => ({
     width: "50%",
     margin: "5% auto",
     "& h4": {
-      margin: "0.5em", 
+      margin: "0.5em"
     }
   },
 
@@ -19,7 +19,7 @@ export const useStyles = makeStyles(theme => ({
   },
 
   grantslistbody: {
-    padding: "2%",
+    padding: "2%"
   },
 
   grantscard: {

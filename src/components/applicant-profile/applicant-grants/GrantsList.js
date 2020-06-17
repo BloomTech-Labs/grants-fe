@@ -10,7 +10,7 @@ import { useStyles } from "./GrantsList.styles";
 export default function GrantsList() {
   const classes = useStyles();
 
-  const grantsLoading = useSelector(state => state.grants.isLoading)
+  const grantsLoading = useSelector(state => state.grants.isLoading);
   const grants = useSelector(state => state.grants.applicantGrants);
 
   return (
