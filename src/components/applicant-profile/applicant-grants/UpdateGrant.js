@@ -15,21 +15,22 @@ import {
   putGrants,
   getGrantsByApplicantId
 } from "../../../store/actions/grantsActions";
-import { getApplicantInfo } from "../../../store/actions/profileActions";
 
 export default function UpdateGrant() {
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
-  const userID = useSelector(state => state.login.userId)
   const applicant_id = useSelector(
+    state => state.profileInfo.profileDetails.applicant_id
+  );
+  const user_id = useSelector(
     state => state.profileInfo.profileDetails.id
   );
   const grants = useSelector(state => state.profileInfo.profileDetails.grants);
   const { id } = useParams();
 
   const [grant, setGrant] = useState({
-    applicant_profile_id: applicant_id,
+    applicant_profile_id: user_id,
     grant_name: "",
     awarding_agency: "",
     sector: "",
@@ -52,7 +53,7 @@ export default function UpdateGrant() {
   const handleSubmit = async e => {
     e.preventDefault();
     dispatch(putGrants(id, grant));
-    dispatch(getApplicantInfo(userID))
+    dispatch(getGrantsByApplicantId(applicant_id))
     await history.push("/GrantsList");
     console.log(grant, id)
   };
@@ -130,7 +131,7 @@ export default function UpdateGrant() {
             </Button>
             <Button variant="contained" color="primary" onClick={() => {
                     dispatch(deleteGrant(grant.id));
-                    dispatch(getApplicantInfo(userID))
+                    dispatch(getGrantsByApplicantId(applicant_id))
                     history.push("/GrantsList")
                   }}>
               Delete

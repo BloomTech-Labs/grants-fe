@@ -8,15 +8,6 @@ import {
   PUT_PROFILE_FAILURE
 } from "../actions/profileActions";
 
-import {
-  PUT_GRANTS_START,
-  PUT_GRANTS_SUCCESS,
-  PUT_GRANTS_FAILURE,
-  DELETE_GRANTS_START,
-  DELETE_GRANTS_SUCCESS,
-  DELETE_GRANTS_FAILURE   
-} from "../actions/grantsActions"
-
 const initialState = {
   profileDetails: {},
   isLoading: false,
@@ -73,47 +64,6 @@ const profileReducer = (state = initialState, action) => {
         isLoading: false,
         isEditing: false
       }
-    case PUT_GRANTS_START:
-    return {
-      ...state,
-      isLoading: true,
-    };
-
-  case PUT_GRANTS_SUCCESS:
-    return {
-      ...state,
-      isLoading: false,
-    };
-
-  case PUT_GRANTS_FAILURE:
-    return {
-      ...state,
-      error: action.payload,
-      isLoading: false,
-    };
-  
-  case DELETE_GRANTS_START:
-    return {
-      ...state,
-      isLoading: true,
-    };
-
-  case DELETE_GRANTS_SUCCESS:
-    return {
-      ...state,
-      profileDetails: {
-        ...state.profileDetails, 
-        grants: state.grants.filter((grant) => grant.id !== action.payload)
-      },
-      isLoading: false,
-    };
-
-  case DELETE_GRANTS_FAILURE:
-    return {
-      ...state,
-      error: action.payload,
-      isLoading: false,
-    };
 
     default:
       return state;
