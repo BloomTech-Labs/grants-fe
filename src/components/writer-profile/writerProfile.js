@@ -11,7 +11,6 @@ import {
   EditButton,
   EditProfile,
 } from "../EditProfileForms/EditProfileForms.js";
-
 import {
   Typography,
   Button,
@@ -22,11 +21,11 @@ import {
   Card,
   CardContent,
 } from "@material-ui/core";
-
 import {
   getWriterInfo,
   updateWriterProfile,
 } from "../../store/actions/profileActions.js";
+import BioCard from "./BioCard.js";
 
 const GlobalCSS = withStyles({
   "@global": {
@@ -186,10 +185,13 @@ const WriterProfile = (props) => {
                   userType={userType}
                 />
               ) : (
-                <h3 className={classes.userEducation}>
-                  {writer.first_name}{" "}{writer.last_name}
-                  <div className={classes.bodyText}>{writer.bio}</div>
-                </h3>
+                // <h3 className={classes.userEducation}>
+                //   {writer.first_name}{" "}{writer.last_name}
+                //   <div className={classes.bodyText}>{writer.bio}</div>
+                // </h3>
+                <BioCard 
+                  writerDetails={writer}
+                />
               )}
             </>
           )}
