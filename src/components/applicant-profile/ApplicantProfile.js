@@ -84,7 +84,7 @@ export default function ApplicantProfile() {
           </Grid>
           <Grid className={classes.grants}>
             <div>
-              <Grants grants={grants} />
+              <Grants applicantDetails={applicantDetails} />
             </div>
           </Grid>
         </div>
