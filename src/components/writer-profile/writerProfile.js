@@ -25,7 +25,7 @@ import {
   getWriterInfo,
   updateWriterProfile,
 } from "../../store/actions/profileActions.js";
-import BioCard from "./BioCard.js";
+import BioCard from "../applicant-profile/BioCard.js";
 
 const GlobalCSS = withStyles({
   "@global": {
@@ -185,13 +185,11 @@ const WriterProfile = (props) => {
                   userType={userType}
                 />
               ) : (
-                // <h3 className={classes.userEducation}>
-                //   {writer.first_name}{" "}{writer.last_name}
-                //   <div className={classes.bodyText}>{writer.bio}</div>
-                // </h3>
-                <BioCard 
-                  writerDetails={writer}
-                />
+                <div>
+                  <BioCard 
+                    profileDetails={writer}
+                  />
+                </div>
               )}
             </>
           )}

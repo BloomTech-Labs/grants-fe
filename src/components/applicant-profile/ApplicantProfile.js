@@ -76,7 +76,7 @@ export default function ApplicantProfile() {
                   userType={userType}
                 />
               ) : (
-                <BioCard applicantDetails={applicantDetails} />
+                <BioCard profileDetails={applicantDetails} />
               )}
             </div>
           </Grid>

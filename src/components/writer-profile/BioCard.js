@@ -3,19 +3,19 @@ import {
   Paper,
   Grid
 } from "@material-ui/core/";
-import { useStyles } from "./writerProfile.styles";
+import { useStyles } from "../applicant-profile/ApplicantProfile.styles";
 
 const BioCard = ({ writerDetails }) => {
   const classes = useStyles();
 
   return (
     <div>
-      <Grid>
+      <Grid clasName={classes.biosection}>
         <h1>
           {writerDetails.first_name}{" "}{writerDetails.last_name}
         </h1>
       </Grid>
-      <Paper>
+      <Paper className={classes.profilepaper}>
         <p>
           {writerDetails.bio}
         </p>
