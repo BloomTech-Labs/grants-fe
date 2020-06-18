@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import { deleteGrant } from "../../../store/actions/grantsActions";
+import Loader from "../../loader/Loader.js";
 import { useStyles } from "./GrantsList.styles";
 
 export default function GrantsList() {
   const classes = useStyles();
 
-  const dispatch = useDispatch();
-  const grants = useSelector((state) => state.grants.grants);
+  const grantsLoading = useSelector(state => state.grants.isLoading);
+  const grants = useSelector(state => state.grants.applicantGrants);
 
   return (
     <div className={classes.container}>
@@ -26,31 +26,40 @@ export default function GrantsList() {
           >
             Add a grant
           </Button>
+          <Button
+            component={Link}
+            to="/profile"
+            variant="contained"
+            color="primary"
+          >
+            Profile Page
+          </Button>
         </div>
       </Grid>
-      <Paper>
-        {grants.map((grant) => {
-          return (
-            <div key={grant.id}>
-              <h3>{grant.grant_name}</h3>
-              <p>{grant.description}</p>
-              <div>
-                <Link to={`/EditGrant/${grant.id}`}>
-                  <Button>Edit</Button>
-                </Link>
-                <Button
-                  type="submit"
-                  onClick={() => {
-                    dispatch(deleteGrant(grant.id));
-                  }}
-                >
-                  Delete
-                </Button>
-              </div>
-            </div>
-          );
-        })}
-      </Paper>
+      <div>
+        <Paper className={classes.grantslistbody}>
+          {grantsLoading === true ? (
+            <Loader />
+          ) : (
+            grants.map(grant => {
+              return (
+                <div className={classes.grantscard} key={grant.id}>
+                  <div className={classes.grantscardheader}>
+                    <h3>{grant.grant_name}</h3>
+                    <div>
+                      <Link to={`/EditGrant/${grant.id}`}>
+                        <Button>Edit</Button>
+                      </Link>
+                    </div>
+                  </div>
+                  <div>Awarding Agency: {grant.awarding_agency}</div>
+                  <p>{grant.description}</p>
+                </div>
+              );
+            })
+          )}
+        </Paper>
+      </div>
     </div>
   );
 }

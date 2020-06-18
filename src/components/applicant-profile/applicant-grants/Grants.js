@@ -1,9 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getGrants,
-  getGrantsByApplicantId,
-} from "../../../store/actions/grantsActions";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../../loader/Loader.js";
 
@@ -11,24 +7,15 @@ import Paper from "@material-ui/core/Paper";
 import { useStyles } from "../ApplicantProfile.styles";
 import Button from "@material-ui/core/Button";
 
-const Grants = () => {
+const Grants = ({ applicantDetails }) => {
+  const { applicant_id } = applicantDetails;
   const classes = useStyles();
-  const dispatch = useDispatch();
-
   const userProfile = useSelector((state) => state.profileInfo.profileDetails);
-
   const viewerId = useSelector((state) => state.login.userId);
-
-  const grants = useSelector((state) => state.grants.profileGrants);
-
+  
+  const grants = useSelector(
+    (state) => state.profileInfo.profileDetails.grants);
   const isLoading = useSelector((state) => state.grants.isLoading);
-
-  useEffect(() => {
-    dispatch(getGrants());
-    dispatch(getGrantsByApplicantId(userProfile.id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userProfile.id]);
-  //
 
   return (
     <>
@@ -38,17 +25,32 @@ const Grants = () => {
         <h3>Grants We'd Like to Apply For:</h3>
       )}
       <Paper className={classes.profilepaper}>
-        {Number(viewerId) === Number(userProfile.applicant_id) ? (
-          <Button component={Link} to="/GrantsList">
-            Edit Grants
-          </Button>
+        {Number(viewerId) === Number(applicant_id) ? (
+          <div>
+            <Button
+              component={Link}
+              to="/GrantsList"
+              variant="contained"
+              color="primary"
+            >
+              Edit Grants
+            </Button>
+            <Button
+              component={Link}
+              to="/GrantsForm"
+              variant="contained"
+              color="primary"
+            >
+              Add New Grant
+            </Button>
+          </div>
         ) : (
           <div> </div>
         )}
         {isLoading ? (
           <Loader />
         ) : (
-          grants.map((grant) => {
+          grants.map(grant => {
             return (
               <div className={classes.profilegrantcard} key={grant.id}>
                 <h4>{grant.grant_name}</h4>

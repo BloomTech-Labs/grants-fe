@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Container } from "@material-ui/core";
 
 // import Card1 from "./grantCards/Card1.jsx";
@@ -13,7 +13,6 @@ import { useStyles } from "./HomepageStyles.jsx";
 const Homepage = () => {
   //======Access state from reducer for Homepage======
   const grants = useSelector((state) => {
-    console.log("Homepage>grants Selector: ", state, state.grants);
     return state.grants.grants;
   });
 
