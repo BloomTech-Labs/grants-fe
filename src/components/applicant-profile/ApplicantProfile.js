@@ -63,7 +63,7 @@ export default function ApplicantProfile() {
 
   return (
     <div className={classes.root}>
-      {!isLoading ? (
+      {applicantDetails && !isLoading ? (
         <div>
           <Grid className={classes.profile}>
             <div className={classes.leftpanel}>
