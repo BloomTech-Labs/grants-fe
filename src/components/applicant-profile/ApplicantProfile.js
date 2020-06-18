@@ -23,6 +23,7 @@ export default function ApplicantProfile() {
   const applicantDetails = useSelector(
     state => state.profileInfo.profileDetails
   );
+  const grants = useSelector(state => state.grants);
   const isLoading = useSelector((state) => state.profileInfo.isLoading);
   const dispatch = useDispatch();
 
