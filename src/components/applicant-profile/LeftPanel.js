@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LeftPanel({ profileDetails }) {
   const classes = useStyles();
-  const profileId = profileDetails.applicant_id;
+  const applicantProfileId = profileDetails.applicant_id;
+  const writerProfileId = profileDetails.writer_id;
   const viewerId = useSelector((state) => state.login.userId);
   const userType = useSelector((state => state.login.usertype));
   
@@ -45,15 +46,23 @@ export default function LeftPanel({ profileDetails }) {
         <div>
           <AccountCircleIcon className={classes.large} />
         </div>
-        {profileDetails.org_name === "" ? (
-          <div className={classes.userName}>
-            {profileDetails.first_name}{" "}{profileDetails.last_name}
-          </div>
+        {userType === "applicant" ? (
+          profileDetails.org_name === "" ? (
+            <div className={classes.userName}>
+              {profileDetails.first_name}{" "}{profileDetails.last_name}
+            </div>
+          ): (
+            <div className={classes.userName}>
+              {profileDetails.org_name}
+            </div>
+          ) 
         ): (
-          <div className={classes.userName}>
-            {profileDetails.org_name}
+          <div clasName={classes.userName}>
+            {profileDetails.first_name}
+            {" "}
+            {profileDetails.last_name}
           </div>
-        ) }
+        )}
         <div>
         <a href={`http://${profileDetails.website}`}>{profileDetails.website}</a>
         </div>
@@ -64,10 +73,14 @@ export default function LeftPanel({ profileDetails }) {
           </Button>
         </div>
         <div>
-        <EditButton 
-          viewerId={viewerId} 
-          profileId={profileId} 
-        />
+          <EditButton 
+            viewerId={viewerId} 
+            profileId={applicantProfileId} 
+          />     
+          <EditButton
+            viewerId={viewerId}
+            profileId={writerProfileId}
+          />
         </div>
       </div>
     </>

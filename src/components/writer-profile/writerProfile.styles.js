@@ -149,4 +149,30 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "1rem",
     },
   },
+  leftpanel: {
+    padding: "25px 0",
+    textAlign: "center",
+    "& div": {
+      marginBottom: "5%"
+    }
+  },
+  root: {
+    display: "flex",
+    "& > *": {
+      margin: "0 auto",
+    },
+  },
+  profile: {
+    margin: "1rem auto",
+    width: "65%",
+    display: "grid",
+    gridTemplateColumns: "0.5fr 0.9fr",
+    gridTemplateRows: "1fr",
+    gap: "1px 75px",
+    [theme.breakpoints.down("xs")]: {
+      gridTemplateColumns: "2fr",
+      gridTemplateRows: "1fr",
+      width: "85%"
+    }
+  }
 }));
