@@ -83,14 +83,18 @@ const WriterProfile = (props) => {
                   />
               )}
             </div>
-            
-            <div>
+          </Grid>
+          <Grid className={classes.bottomGrid}>
+
+            {/* <div>
             <WriterEducation />
-            </div>
+            </div> */}
           
-            <div>  
+            {/* <div>  
             <WriterServices />
-            </div>
+            </div> */}
+            
+            {/*These are currently inactive until the connection to backend is put in place.*/}
             <div>            
             <WorkHistory 
               writer={writer}
