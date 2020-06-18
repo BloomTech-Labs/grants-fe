@@ -33,27 +33,29 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function LeftPanel({ applicantDetails }) {
+export default function LeftPanel({ profileDetails }) {
   const classes = useStyles();
-  const profileId = applicantDetails.applicant_id;
+  const profileId = profileDetails.applicant_id;
   const viewerId = useSelector((state) => state.login.userId);
+  const userType = useSelector((state => state.login.usertype));
+  
   return (
     <>
       <div className={classes.leftpanel}>
         <div>
           <AccountCircleIcon className={classes.large} />
         </div>
-        {applicantDetails.org_name === "" ? (
+        {profileDetails.org_name === "" ? (
           <div className={classes.userName}>
-            {applicantDetails.first_name}{" "}{applicantDetails.last_name}
+            {profileDetails.first_name}{" "}{profileDetails.last_name}
           </div>
         ): (
           <div className={classes.userName}>
-            {applicantDetails.org_name}
+            {profileDetails.org_name}
           </div>
         ) }
         <div>
-        <a href={`http://${applicantDetails.website}`}>{applicantDetails.website}</a>
+        <a href={`http://${profileDetails.website}`}>{profileDetails.website}</a>
         </div>
         <div>
           <Button 

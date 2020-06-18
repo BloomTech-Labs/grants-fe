@@ -65,7 +65,7 @@ export default function ApplicantProfile() {
         <div>
           <Grid className={classes.profile}>
             <div className={classes.leftpanel}>
-              <LeftPanel applicantDetails={applicantDetails} />
+              <LeftPanel profileDetails={applicantDetails} />
             </div>
             <div>
               {isEditing === true ? (
