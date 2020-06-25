@@ -72,7 +72,7 @@ Connecting grant writers with individuals and organizations looking for a grant 
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-    *  REACT_APP_GRANTED_API - link to the base URL for backend endpoints. Set to `https://grantedbackend.herokuapp.com/api/`
+    *  REACT_APP_GRANTED_API - link to the base URL for backend endpoints. Set to locally hosted version of the database for development and deployed base URL of database for production. 
   
 
 # Content Licenses
@@ -93,6 +93,7 @@ In order for the app to function correctly, the user must set up their own envir
 - fork and clone this repository.
 - CD into the folder where you cloned your fork.
 - type `npm i` to download dependencies.
+- add .env file for environmental variables.
 - type `npm start` to run locally.
 
 ## Other Scripts
@@ -140,6 +141,6 @@ Remember that this project is licensed under the MIT license, and by submitting 
 
 These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
 
-## Documentation
+## Back End
 
-See [Backend Documentation](https://github.com/Lambda-School-Labs/grants-be/blob/master/README.md) for details on the backend of our project.
+See [Back End Repo](https://github.com/Lambda-School-Labs/grants-be/blob/master/README.md) for details on the back end of our project.
