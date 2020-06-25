@@ -20,7 +20,7 @@ export const useStyles = makeStyles(theme => ({
     width: "100%"
   },
   grantsbuttons: {
-    width: "65%",
+    width: "70%",
     justifyContent: "flex-end",
     display: "flex",
     flexDirection: "row",

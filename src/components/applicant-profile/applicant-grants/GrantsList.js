@@ -26,23 +26,27 @@ export default function GrantsList() {
     <div className={classes.container}>
       <Grid className={classes.grantslistheader}>
         <h2>Saved Grants</h2>
-        <div>
-          <Button
-            component={Link}
-            to="/GrantsForm"
-            variant="contained"
-            color="primary"
-          >
-            Add a grant
-          </Button>
-          <Button
-            component={Link}
-            to="/profile"
-            variant="contained"
-            color="primary"
-          >
-            Profile Page
-          </Button>
+        <div className={classes.grantslistbtns}>
+          <div>
+            <Button
+              component={Link}
+              to="/GrantsForm"
+              variant="contained"
+              color="primary"
+            >
+              Add a grant
+            </Button>
+          </div>
+          <div> 
+            <Button
+              component={Link}
+              to="/profile"
+              variant="contained"
+              color="primary"
+            >
+              Return to Profile
+            </Button>
+          </div>
         </div>
       </Grid>
       <div>
