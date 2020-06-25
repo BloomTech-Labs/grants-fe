@@ -111,7 +111,7 @@ export default function GrantsForm() {
               className={classes.textarea}
             />
           </Grid>
-          <div className={classes.addbutton}>
+          <div className={classes.grantsbuttons}>
             <Button type="submit" variant="contained" color="primary">
               Add a Grant
             </Button>

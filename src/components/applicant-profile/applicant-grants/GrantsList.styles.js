@@ -11,7 +11,7 @@ export const useStyles = makeStyles(theme => ({
 
   grantslistheader: {
     display: "grid",
-    gridTemplateColumns: "1.2fr 0.8fr",
+    gridTemplateColumns: "1fr 1fr",
     "& div": {
       margin: "auto"
     },
@@ -38,5 +38,11 @@ export const useStyles = makeStyles(theme => ({
     "& h3": {
       margin: "0.05em"
     }
+  },
+  grantslistbtns: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "flex-end",
+    flexDirection: "row"
   }
 }));
