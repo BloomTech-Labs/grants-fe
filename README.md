@@ -68,20 +68,10 @@ Connecting grant writers with individuals and organizations looking for a grant 
 - Express
 - PostgreSQL
 
-# APIs
-
-## 1️⃣ [US Department of Education College Scorecard API](https://collegescorecard.ed.gov/data/documentation/)
-
-College Scorecard provides data at the institution-level and data by field of study. The technical data documents provide in-depth information about these data. The data dictionary includes separate worksheets with institution-level and field of study dictionaries as well as cohort maps describing the timing aspects of each data element.
-
 # 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-    *  REACT_APP_COLLEGE_API - This should be set to the endpoint in the College Scorecard API that will go through the list of official school names. Used in the onboarding process. Set to `https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=`
-    *  REACT_APP_COLLEGE_API_QUERY - Query specificity for selecting school names in College Scorecard API. Set to `&fields=id,school.name&`
-    *  REACT_APP_COLLEGE_API_KEY - College Scorecare API key. Can be registered at [US Dept. of Ed Official API site](https://collegescorecard.ed.gov/data/documentation/)
-    *  REACT_APP_COLLEGE_BACKUP_API_KEY - Second backup API key. Can also be registered at the link listed above. 
     *  REACT_APP_GRANTED_API - link to the base URL for backend endpoints. Set to `https://grantedbackend.herokuapp.com/api/`
   
 

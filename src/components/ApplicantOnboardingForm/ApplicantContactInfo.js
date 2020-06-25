@@ -4,8 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import { useSelector } from "react-redux";
-import Loader from "../loader/Loader.js";
 
 import { useStyles } from "./ApplicantForm.styles";
 export default function ApplicantContactInfo({
@@ -18,13 +16,9 @@ export default function ApplicantContactInfo({
   handleOrgStatusChange,
 }) {
   const classes = useStyles();
-  const isLoading = useSelector((state) => state.login.isLoading);
-  console.log("loading?", isLoading);
 
   return (
     <div className={classes.container}>
-      {isLoading === true ? (
-        <>
         <Typography component="h2" variant="h6" gutterBottom>
           Contact Information
         </Typography>
@@ -142,10 +136,6 @@ export default function ApplicantContactInfo({
             />
           </Grid>
         </Grid>
-        </>
-      ): (
-        <Loader />
-      )}
     </div>
   );
 }
