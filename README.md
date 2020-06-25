@@ -3,7 +3,7 @@
 
 # 1️⃣ Granted
 
-## You can find the deployed project at [Granted](https://prod-granted.herokuapp.com/).
+## You can find the deployed project at [Granted](http://www.writemygrants.net/).
 
 # 2️⃣ Contributors
 
