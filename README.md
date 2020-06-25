@@ -1,19 +1,11 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/13f17f26b8dd33daa361/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/grants-fe/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/13f17f26b8dd33daa361/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/grants-fe/test_coverage)
 
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by. Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
 # 1️⃣ Granted
 
-1️⃣ You can find the deployed project at [Granted](https://prod-granted.herokuapp.com/).
+## You can find the deployed project at [Granted](https://prod-granted.herokuapp.com/).
 
-## 4️⃣ Contributors
-
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
+# 2️⃣ Contributors
 
 |                                                [Natalie Davis](https://github.com/FreedomWriter)                                                                       |                                          [Lee Wood](https://github.com/LeeWood)                                                                              |                                       [Blupe](https://github.com/JorgeLuisFlores)                                                  |                                             [Danica Valdez](https://github.com/danicavaldez)                                             |                                      [Brett Karr](https://github.com/bwkarr77)                                                                                    |                                          [Toosdai Otte](https://github.com/ToosdaiOtte)                                                                              |                                                                         [Eva Gurtovaya](https://github.com/EvaGurtovaia)                                                        |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -25,30 +17,22 @@
 <br>
 <br>
 
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-🚫 more info on using badges [here](https://github.com/badges/shields)
-
-## Project Overview
+# 3️⃣ Project Overview
 
 1️⃣ [Trello Board](https://trello.com/b/ry8wjYUz/granted)
 
-1️⃣ [Product Canvas](https://www.notion.so/Granted-4e7631ec63c04ef98f41dbf1235cbab5)
+2️⃣ [Product Canvas](https://www.notion.so/Granted-4e7631ec63c04ef98f41dbf1235cbab5)
 
 Connecting grant writers with individuals and organizations looking for a grant writer for their RFPs and grant applications. 
 
-### 4️⃣ Key Features
+3️⃣ Key Features
 
 - Dashboard with available grant listings
 - User Profiles (Grantees / Grant Writers)
+- Grantees can add new grant listings to the dashboard.
+- Grant writers can favorite grants and view their list of favorites.
 
-## 1️⃣ Tech Stack
+# 4️⃣ Tech Stack
 
 ### Front end built using:
 
@@ -60,95 +44,76 @@ Connecting grant writers with individuals and organizations looking for a grant 
 - React uses JavaScript which is robust , making it: simple, focused, and consistent
 - Ability to use Redux for state management
 
+#### - Redux
+
+- More powerful than Context Api
+- Redux has capabilities like: thunk, saga, persist, etc. that allow for greater state control
+
+#### - Material-UI (styling)
+
+- Built in 508 compliance
+- Easy customization
+- Built-in components
+- Easy to integrate responsiveness
+- Themes make styling easier
+- Plenty of documentation
+- Regular updates
+
 
 #### Front end deployed to `Heroku`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/Lambda-School-Labs/grants-be) built using:
 
-#### 🚫 back end framework goes here
-
-- point one
-- point two
-- point three
-
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+- Node.JS
+- Express
+- PostgreSQL
 
 # APIs
 
-## 2️⃣ Authentication API here
+## 1️⃣ [US Department of Education College Scorecard API](https://collegescorecard.ed.gov/data/documentation/)
 
-🚫Replace text below with a description of the API
-
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
-
-## 2️⃣ Payment API here
-
-🚫Replace text below with a description of the API
-
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
+College Scorecard provides data at the institution-level and data by field of study. The technical data documents provide in-depth information about these data. The data dictionary includes separate worksheets with institution-level and field of study dictionaries as well as cohort maps describing the timing aspects of each data element.
 
 # 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
+    *  REACT_APP_COLLEGE_API - This should be set to the endpoint in the College Scorecard API that will go through the list of official school names. Used in the onboarding process. Set to `https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name=`
+    *  REACT_APP_COLLEGE_API_QUERY - Query specificity for selecting school names in College Scorecard API. Set to `&fields=id,school.name&`
+    *  REACT_APP_COLLEGE_API_KEY - College Scorecare API key. Can be registered at [US Dept. of Ed Official API site](https://collegescorecard.ed.gov/data/documentation/)
+    *  REACT_APP_COLLEGE_BACKUP_API_KEY - Second backup API key. Can also be registered at the link listed above. 
+    *  REACT_APP_GRANTED_API - link to the base URL for backend endpoints. Set to `https://grantedbackend.herokuapp.com/api/`
+  
 
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
-
-# 5️⃣ Content Licenses
-
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
+# 4️⃣ Content Licenses
 
 | Image Filename | Source / Creator | License                                                                      |
 | -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+| opaque-background.jpeg   | Burst   | [Creative Commons](https://unsplash.com/photos/kUqqaRjJuw0) |                         |
 
-# 4️⃣ Testing
+# 5️⃣ Testing
 
-🚫Document what you used for testing and why
+#### - Jest
+- Quick and lightweight
+- Works very well with JS
+- Expandable framework
 
-# 4️⃣ Installation Instructions
+# 6️⃣ Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+- fork and clone this repository.
+- CD into the folder where you cloned your fork.
+- type `npm i` to download dependencies.
+- type `npm start` to run locally.
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
     * build - creates a build of the application
     * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+    * test - runs tests in **tests** directory \
+    * eject - copy the configuration files and dependencies into the project so you have full control over them
+    * coverage - runs tests and returns coverage percentage on repo
 
-# Contributing
+# 7️⃣ Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
@@ -187,4 +152,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫*link to your backend readme here*) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/grants-be/blob/master/README.md) for details on the backend of our project.
