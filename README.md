@@ -1,11 +1,11 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/13f17f26b8dd33daa361/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/grants-fe/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/13f17f26b8dd33daa361/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/grants-fe/test_coverage)
 
-# 1️⃣ Granted
+# Granted
 
 ## You can find the deployed project at [Granted](http://www.writemygrants.net/).
 
-# 2️⃣ Contributors
+# Contributors
 
 |                                                [Natalie Davis](https://github.com/FreedomWriter)                                                                       |                                          [Lee Wood](https://github.com/LeeWood)                                                                              |                                       [Blupe](https://github.com/JorgeLuisFlores)                                                  |                                             [Danica Valdez](https://github.com/danicavaldez)                                             |                                      [Brett Karr](https://github.com/bwkarr77)                                                                                    |                                          [Toosdai Otte](https://github.com/ToosdaiOtte)                                                                              |                                                                         [Eva Gurtovaya](https://github.com/EvaGurtovaia)                                                        |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -17,22 +17,22 @@
 <br>
 <br>
 
-# 3️⃣ Project Overview
+# Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/ry8wjYUz/granted)
+ [Trello Board](https://trello.com/b/ry8wjYUz/granted)
 
-2️⃣ [Product Canvas](https://www.notion.so/Granted-4e7631ec63c04ef98f41dbf1235cbab5)
+ [Product Canvas](https://www.notion.so/Granted-4e7631ec63c04ef98f41dbf1235cbab5)
 
 Connecting grant writers with individuals and organizations looking for a grant writer for their RFPs and grant applications. 
 
-3️⃣ Key Features
+# Key Features
 
 - Dashboard with available grant listings
 - User Profiles (Grantees / Grant Writers)
 - Grantees can add new grant listings to the dashboard.
 - Grant writers can favorite grants and view their list of favorites.
 
-# 4️⃣ Tech Stack
+# Tech Stack
 
 ### Front end built using:
 
@@ -68,31 +68,32 @@ Connecting grant writers with individuals and organizations looking for a grant 
 - Express
 - PostgreSQL
 
-# 3️⃣ Environment Variables
+# Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-    *  REACT_APP_GRANTED_API - link to the base URL for backend endpoints. Set to `https://grantedbackend.herokuapp.com/api/`
+    *  REACT_APP_GRANTED_API - link to the base URL for backend endpoints. Set to locally hosted version of the database for development and deployed base URL of database for production. 
   
 
-# 4️⃣ Content Licenses
+# Content Licenses
 
 | Image Filename | Source / Creator | License                                                                      |
 | -------------- | ---------------- | ---------------------------------------------------------------------------- |
 | opaque-background.jpeg   | Burst   | [Creative Commons](https://unsplash.com/photos/kUqqaRjJuw0) |                         |
 
-# 5️⃣ Testing
+# Testing
 
 #### - Jest
 - Quick and lightweight
 - Works very well with JS
 - Expandable framework
 
-# 6️⃣ Installation Instructions
+# Installation Instructions
 
 - fork and clone this repository.
 - CD into the folder where you cloned your fork.
 - type `npm i` to download dependencies.
+- add .env file for environmental variables.
 - type `npm start` to run locally.
 
 ## Other Scripts
@@ -103,7 +104,7 @@ In order for the app to function correctly, the user must set up their own envir
     * eject - copy the configuration files and dependencies into the project so you have full control over them
     * coverage - runs tests and returns coverage percentage on repo
 
-# 7️⃣ Contributing
+# Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
@@ -140,6 +141,6 @@ Remember that this project is licensed under the MIT license, and by submitting 
 
 These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
 
-## Documentation
+## Back End
 
-See [Backend Documentation](https://github.com/Lambda-School-Labs/grants-be/blob/master/README.md) for details on the backend of our project.
+See [Back End Repo](https://github.com/Lambda-School-Labs/grants-be/blob/master/README.md) for details on the back end of our project.
